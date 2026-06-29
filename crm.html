@@ -43,5 +43,144 @@
 <a href="customer.html" data-ru="Кабинет" data-uk="Кабінет" data-es="Cuenta" data-en="Account">Кабинет</a>
 </nav>
 <script src="app.js"></script>
+<script id="ACTIVE_LINKS_SCRIPT">
+
+(function(){
+  function go(url){
+    if(url) window.location.href = url;
+  }
+
+  function text(el){
+    return (el.textContent || '').trim().toLowerCase();
+  }
+
+  // Главный поиск
+  document.querySelectorAll('.hero-search a, .hero-search button, .top-search button').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var q = '';
+      var city = '';
+      var searchInput = document.querySelector('.top-search input');
+      var heroInputs = document.querySelectorAll('.hero-search input');
+      var heroSelect = document.querySelector('.hero-search select');
+
+      if (heroSelect) q = heroSelect.value || '';
+      if (heroInputs.length) city = heroInputs[0].value || '';
+      if (!q && searchInput) q = searchInput.value || '';
+
+      go('search.html?category=' + encodeURIComponent(q) + '&city=' + encodeURIComponent(city));
+    });
+  });
+
+  document.querySelectorAll('.top-search input, .hero-search input').forEach(function(input){
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        go('search.html?query=' + encodeURIComponent(input.value || ''));
+      }
+    });
+  });
+
+  // Категории и чипсы
+  document.querySelectorAll('.chips a, .category-grid article, .category-grid a').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      go('catalog.html?category=' + encodeURIComponent(text(el)));
+    });
+  });
+
+  // Карточки компаний
+  document.querySelectorAll('.company-card').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.closest('a,button')) return;
+      go('company.html');
+    });
+  });
+
+  // Кнопки внутри карточек
+  document.querySelectorAll('a, button').forEach(function(el){
+    var t = text(el);
+
+    if(!el.getAttribute('href') && el.tagName.toLowerCase() === 'button'){
+      if(t.includes('найти') || t.includes('search') || t.includes('buscar')) el.addEventListener('click', function(){go('search.html')});
+      else if(t.includes('открыть') || t.includes('подробнее') || t.includes('details') || t.includes('abrir')) el.addEventListener('click', function(){go('company.html')});
+      else if(t.includes('заяв') || t.includes('request') || t.includes('solicitud')) el.addEventListener('click', function(){go('request.html')});
+      else if(t.includes('чат') || t.includes('chat')) el.addEventListener('click', function(){go('chat.html')});
+      else if(t.includes('оплат') || t.includes('payment') || t.includes('pago')) el.addEventListener('click', function(){go('payment.html')});
+    }
+
+    if(el.getAttribute('href') === '#'){
+      eurl = 'index.html';
+      if(t.includes('каталог')) eurl = 'catalog.html';
+      if(t.includes('поиск')) eurl = 'search.html';
+      if(t.includes('карта')) eurl = 'map.html';
+      if(t.includes('заяв')) eurl = 'request.html';
+      if(t.includes('предлож')) eurl = 'offers.html';
+      if(t.includes('чат')) eurl = 'chat.html';
+      if(t.includes('сдел')) eurl = 'deal.html';
+      if(t.includes('оплат')) eurl = 'payment.html';
+      el.setAttribute('href', eurl);
+    }
+  });
+
+  // Карта
+  document.querySelectorAll('.map-preview, .map-large, .map-box, .open-map').forEach(function(el){
+    el.addEventListener('click', function(e){
+      if(e.target.closest('a,button')) return;
+      go('map.html');
+    });
+  });
+
+  // Метрики
+  document.querySelectorAll('.metrics div').forEach(function(el, i){
+    el.addEventListener('click', function(){
+      if(i === 0) go('catalog.html');
+      else if(i === 1) go('deal.html');
+      else if(i === 2) go('reviews.html');
+      else go('payment.html');
+    });
+  });
+
+  // Предложения и отзывы
+  document.querySelectorAll('.offer').forEach(function(el){
+    el.addEventListener('click', function(e){
+      if(e.target.closest('a,button')) return;
+      go('offers.html');
+    });
+  });
+
+  document.querySelectorAll('.quote, .review-grid article').forEach(function(el){
+    el.addEventListener('click', function(){
+      go('reviews.html');
+    });
+  });
+
+  // Цены и услуги
+  document.querySelectorAll('.price-grid article').forEach(function(el){
+    el.addEventListener('click', function(){
+      go('request.html');
+    });
+  });
+
+  // CRM / канбан
+  document.querySelectorAll('.kanban div').forEach(function(el){
+    el.addEventListener('click', function(){
+      go('crm.html');
+    });
+  });
+
+  // Таблицы
+  document.querySelectorAll('table tr').forEach(function(row, i){
+    if(i === 0) return;
+    row.addEventListener('click', function(){
+      var page = 'deal.html';
+      if(location.pathname.includes('admin')) page = 'admin-companies.html';
+      if(location.pathname.includes('business')) page = 'business-crm.html';
+      go(page);
+    });
+  });
+})();
+
+</script>
 </body>
 </html>

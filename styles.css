@@ -312,3 +312,39 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* === ACTIVE CLICKABLE UI UPDATE === */
+a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, .price-grid article, .kanban div, .review-grid article {
+  cursor: pointer;
+}
+
+a:active,
+button:active,
+.company-card:active,
+.category-grid article:active,
+.metrics div:active,
+.offer:active,
+.price-grid article:active {
+  transform: scale(.98);
+}
+
+.company-card,
+.category-grid article,
+.metrics div,
+.offer,
+.price-grid article,
+.kanban div,
+.review-grid article {
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.company-card:hover,
+.category-grid article:hover,
+.metrics div:hover,
+.offer:hover,
+.price-grid article:hover,
+.kanban div:hover,
+.review-grid article:hover {
+  box-shadow: 0 18px 48px rgba(16,24,40,.12);
+}
