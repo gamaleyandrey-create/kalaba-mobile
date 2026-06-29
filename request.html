@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalaba — Создание заявки</title>
+<title>Kalaba — Создать заявку</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +15,9 @@
       <span>Маркетплейс услуг в Испании</span>
     </span>
   </a>
-  <div class="mobile-brand-actions"><button class="mobile-menu-button" type="button" aria-label="Меню">☰</button></div>
+  <div class="mobile-brand-actions">
+    <button class="mobile-menu-button" type="button" aria-label="Меню">☰</button>
+  </div>
 </header>
 
 <div class="mobile-menu-backdrop"></div>
@@ -33,127 +35,125 @@
   <a href="deal.html">🤝 Сделка</a>
   <a href="payment.html">💳 Оплата</a>
   <a href="map.html">🗺 Карта Испании</a>
-  <div class="mobile-menu-group">
-    <a href="customer.html">👤 Кабинет клиента</a>
-    <a href="business.html">👑 Кабинет компании</a>
-    <a href="help.html">❓ Помощь</a>
-  </div>
 </aside>
 
-<main>
-  <section class="request-mobile-flow">
-    <div class="request-hero-card">
-      <h1>Создать заявку</h1>
-      <p>Опишите задачу, выберите город и бюджет. Компании смогут отправить вам предложения.</p>
+<main class="request-clean-page">
+  <section class="request-clean-hero">
+    <h1>Создать заявку</h1>
+    <p>Опишите задачу, выберите город и бюджет. Компании отправят вам предложения.</p>
+  </section>
+
+  <section class="request-progress">
+    <div class="request-progress-line">
+      <div class="request-step-dot active"><i>1</i><span>Услуга</span></div>
+      <div class="request-step-dot"><i>2</i><span>Детали</span></div>
+      <div class="request-step-dot"><i>3</i><span>Предложения</span></div>
+    </div>
+  </section>
+
+  <form class="request-form-clean" id="requestForm">
+    <h2>Что нужно сделать?</h2>
+
+    <div class="request-chip-row">
+      <button type="button" class="active" data-category="Ремонт и отделка">🛠 Ремонт</button>
+      <button type="button" data-category="Сантехника">🚿 Сантехника</button>
+      <button type="button" data-category="Клининг">🧹 Клининг</button>
+      <button type="button" data-category="Переезды">🚚 Переезды</button>
+      <button type="button" data-category="Электрика">⚡ Электрика</button>
+      <button type="button" data-category="Сад и ландшафт">🌿 Сад</button>
     </div>
 
-    <div class="request-steps-mobile">
-      <span class="active">1. Услуга</span>
-      <span>2. Детали</span>
-      <span>3. Предложения</span>
+    <div class="request-field-clean">
+      <label for="category">Категория</label>
+      <select id="category">
+        <option>Ремонт и отделка</option>
+        <option>Сантехника</option>
+        <option>Клининг</option>
+        <option>Переезды</option>
+        <option>Электрика</option>
+        <option>Сад и ландшафт</option>
+      </select>
     </div>
 
-    <form class="request-form-card" id="requestForm">
-      <h2>Что нужно сделать?</h2>
-
-      <div class="request-category-pills">
-        <button type="button" class="active" data-category="Ремонт и отделка">🛠 Ремонт</button>
-        <button type="button" data-category="Сантехника">🚿 Сантехника</button>
-        <button type="button" data-category="Клининг">🧹 Клининг</button>
-        <button type="button" data-category="Переезды">🚚 Переезды</button>
-        <button type="button" data-category="Электрика">⚡ Электрика</button>
-      </div>
-
-      <div class="request-field">
-        <label for="category">Категория</label>
-        <select id="category" name="category">
-          <option>Ремонт и отделка</option>
-          <option>Сантехника</option>
-          <option>Клининг</option>
-          <option>Переезды</option>
-          <option>Электрика</option>
-          <option>Сад и ландшафт</option>
+    <div class="request-two">
+      <div class="request-field-clean">
+        <label for="city">Город</label>
+        <select id="city">
+          <option>Мадрид</option>
+          <option>Барселона</option>
+          <option>Валенсия</option>
+          <option>Севилья</option>
+          <option>Малага</option>
+          <option>Бильбао</option>
         </select>
       </div>
 
-      <div class="request-grid-2">
-        <div class="request-field">
-          <label for="city">Город</label>
-          <select id="city" name="city">
-            <option>Мадрид</option>
-            <option>Барселона</option>
-            <option>Валенсия</option>
-            <option>Севилья</option>
-            <option>Малага</option>
-            <option>Бильбао</option>
-          </select>
-        </div>
-
-        <div class="request-field">
-          <label for="budget">Бюджет</label>
-          <select id="budget" name="budget">
-            <option>До 100 €</option>
-            <option>100–500 €</option>
-            <option>500–1500 €</option>
-            <option>1500–5000 €</option>
-            <option>Нужна оценка</option>
-          </select>
-        </div>
+      <div class="request-field-clean">
+        <label for="budget">Бюджет</label>
+        <select id="budget">
+          <option>До 100 €</option>
+          <option>100–500 €</option>
+          <option>500–1500 €</option>
+          <option>1500–5000 €</option>
+          <option>Нужна оценка</option>
+        </select>
       </div>
-
-      <div class="request-field">
-        <label for="address">Адрес или район</label>
-        <input id="address" name="address" value="Calle de Alcalá, 45, Madrid" placeholder="Например: Calle de Alcalá, 45, Madrid">
-      </div>
-
-      <div class="request-grid-2">
-        <div class="request-field">
-          <label for="date">Когда начать</label>
-          <select id="date" name="date">
-            <option>Как можно скорее</option>
-            <option>На этой неделе</option>
-            <option>В течение месяца</option>
-            <option>Дата обсуждается</option>
-          </select>
-        </div>
-
-        <div class="request-field">
-          <label for="contact">Связь</label>
-          <select id="contact" name="contact">
-            <option>Чат Kalaba</option>
-            <option>Телефон</option>
-            <option>Email</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="request-field">
-        <label for="description">Описание задачи</label>
-        <textarea id="description" name="description" placeholder="Напишите, что нужно сделать, размеры, сроки и важные детали.">Нужно выполнить работы в квартире. Хочу получить несколько предложений от проверенных компаний.</textarea>
-      </div>
-
-      <div class="request-upload-box">
-        📷 Добавить фото или документы<br>
-        <small>Демо: загрузка показана как элемент интерфейса</small>
-      </div>
-    </form>
-
-    <div class="request-preview-card">
-      <b>Что произойдёт дальше?</b>
-      <ul>
-        <li>Заявка попадёт в раздел предложений.</li>
-        <li>Компании смогут отправить цену и сроки.</li>
-        <li>Вы сможете перейти в чат или оформить сделку.</li>
-      </ul>
     </div>
 
-    <div class="request-submit-bar">
-      <a class="secondary" href="catalog.html">Выбрать компанию</a>
-      <button class="primary" id="submitRequest" type="button">Получить предложения</button>
+    <div class="request-field-clean">
+      <label for="address">Адрес или район</label>
+      <input id="address" value="Calle de Alcalá, 45, Madrid" placeholder="Например: Calle de Alcalá, 45, Madrid">
     </div>
+
+    <div class="request-two">
+      <div class="request-field-clean">
+        <label for="date">Когда начать</label>
+        <select id="date">
+          <option>Как можно скорее</option>
+          <option>На этой неделе</option>
+          <option>В течение месяца</option>
+          <option>Дата обсуждается</option>
+        </select>
+      </div>
+
+      <div class="request-field-clean">
+        <label for="contact">Связь</label>
+        <select id="contact">
+          <option>Чат Kalaba</option>
+          <option>Телефон</option>
+          <option>Email</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="request-field-clean">
+      <label for="description">Описание работ</label>
+      <textarea id="description">Нужно выполнить работы в квартире. Хочу получить несколько предложений от проверенных компаний.</textarea>
+    </div>
+
+    <div class="request-upload-clean">
+      <div>
+        <div style="font-size:32px">📷</div>
+        <strong>Добавить фото</strong>
+        <span>Фото, документы или примеры работ</span>
+      </div>
+    </div>
+  </form>
+
+  <section class="request-next-card">
+    <h2>Что произойдёт дальше?</h2>
+    <ul>
+      <li>Компании увидят вашу заявку.</li>
+      <li>Вы получите цены и сроки выполнения.</li>
+      <li>Сможете перейти в чат и оформить сделку.</li>
+      <li>Оплата будет проходить безопасно через Kalaba.</li>
+    </ul>
   </section>
-</main>
 
+  <div class="request-main-submit">
+    <button type="button" id="submitRequest">Получить предложения</button>
+  </div>
+</main>
 
 <nav class="mobile-nav">
   <a href="index.html"><span>🏠</span><em data-ru="Главная" data-uk="Головна" data-es="Inicio" data-en="Home">Главная</em></a>
@@ -162,7 +162,6 @@
   <a href="chat.html"><span>💬</span><em data-ru="Чат" data-uk="Чат" data-es="Chat" data-en="Chat">Чат</em></a>
   <a href="customer.html"><span>👤</span><em data-ru="Кабинет" data-uk="Кабінет" data-es="Cuenta" data-en="Account">Кабинет</em></a>
 </nav>
-
 
 <script src="app.js"></script>
 <script>
@@ -174,56 +173,23 @@
   if(closeButton) closeButton.onclick = () => document.body.classList.remove('mobile-menu-open');
   if(backdrop) backdrop.onclick = () => document.body.classList.remove('mobile-menu-open');
 
-  const categorySelect = document.getElementById('category');
-  document.querySelectorAll('.request-category-pills button').forEach(btn => {
+  const category = document.getElementById('category');
+  document.querySelectorAll('.request-chip-row button').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.request-category-pills button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.request-chip-row button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      categorySelect.value = btn.dataset.category;
+      category.value = btn.dataset.category;
     });
   });
 
   document.getElementById('submitRequest').addEventListener('click', () => {
     const params = new URLSearchParams();
-    params.set('category', categorySelect.value);
+    params.set('category', category.value);
     params.set('city', document.getElementById('city').value);
     params.set('budget', document.getElementById('budget').value);
     window.location.href = 'offers.html?' + params.toString();
   });
 })();
-</script>
-<script id="MOBILE_NAV_LANGUAGE_SCRIPT">
-
-(function(){
-  function detectLang(){
-    return localStorage.getItem('kalaba_lang') ||
-      document.documentElement.lang ||
-      'ru';
-  }
-
-  function applyMobileNavLang(){
-    const lang = detectLang();
-    document.querySelectorAll('[data-ru][data-uk][data-es][data-en]').forEach(function(el){
-      const value = el.getAttribute('data-' + lang);
-      if(value) el.textContent = value;
-    });
-  }
-
-  document.querySelectorAll('.lang, [data-lang]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      const lang = btn.dataset.lang || btn.getAttribute('data-lang');
-      if(lang) {
-        localStorage.setItem('kalaba_lang', lang);
-        document.documentElement.lang = lang;
-        setTimeout(applyMobileNavLang, 30);
-      }
-    });
-  });
-
-  applyMobileNavLang();
-  window.addEventListener('storage', applyMobileNavLang);
-})();
-
 </script>
 </body>
 </html>
