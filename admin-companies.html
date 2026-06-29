@@ -21,13 +21,15 @@
 <div><i>🛡</i><strong>100%</strong><span data-ru="Безопасная оплата" data-uk="Безпечна оплата" data-es="Pago seguro" data-en="Secure payment">Безопасная оплата</span></div>
 </section><section class="panel wide"><table><tr><th>Компания</th><th>Город</th><th>Статус</th></tr><tr><td>Ремонт Барселона</td><td>Барселона</td><td>Проверено</td></tr><tr><td>Клининг Севилья</td><td>Севилья</td><td>Проверено</td></tr></table></section>
 </main> 
+
 <nav class="mobile-nav">
-  <a href="index.html"><span>🏠</span>Главная</a>
-  <a href="search.html"><span>🔎</span>Поиск</a>
-  <a href="request.html"><span>📝</span>Заявка</a>
-  <a href="chat.html"><span>💬</span>Чат</a>
-  <a href="customer.html"><span>👤</span>Кабинет</a>
+  <a href="index.html"><span>🏠</span><em data-ru="Главная" data-uk="Головна" data-es="Inicio" data-en="Home">Главная</em></a>
+  <a href="search.html"><span>🔎</span><em data-ru="Поиск" data-uk="Пошук" data-es="Buscar" data-en="Search">Поиск</em></a>
+  <a href="request.html"><span>📝</span><em data-ru="Заявка" data-uk="Заявка" data-es="Solicitud" data-en="Request">Заявка</em></a>
+  <a href="chat.html"><span>💬</span><em data-ru="Чат" data-uk="Чат" data-es="Chat" data-en="Chat">Чат</em></a>
+  <a href="customer.html"><span>👤</span><em data-ru="Кабинет" data-uk="Кабінет" data-es="Cuenta" data-en="Account">Кабинет</em></a>
 </nav>
+
  <script src="app.js"></script>
 <script id="MOBILE_APP_MENU_SCRIPT"> (function(){ var menuButton = document.querySelector('.mobile-menu-button'); var closeButton = document.querySelector('.mobile-menu-close'); var backdrop = document.querySelector('.mobile-menu-backdrop'); if(menuButton){ menuButton.addEventListener('click', function(e){ e.preventDefault(); document.body.classList.add('mobile-menu-open'); }); } if(closeButton){ closeButton.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); } if(backdrop){ backdrop.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); } document.querySelectorAll('.mobile-menu-panel a').forEach(function(a){ a.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); });
 })(); </script>
@@ -278,6 +280,39 @@
       if(categoryFrom(el.textContent).toLowerCase() === normalized) el.classList.add('active');
     });
   }
+})();
+
+</script>
+<script id="MOBILE_NAV_LANGUAGE_SCRIPT">
+
+(function(){
+  function detectLang(){
+    return localStorage.getItem('kalaba_lang') ||
+      document.documentElement.lang ||
+      'ru';
+  }
+
+  function applyMobileNavLang(){
+    const lang = detectLang();
+    document.querySelectorAll('[data-ru][data-uk][data-es][data-en]').forEach(function(el){
+      const value = el.getAttribute('data-' + lang);
+      if(value) el.textContent = value;
+    });
+  }
+
+  document.querySelectorAll('.lang, [data-lang]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const lang = btn.dataset.lang || btn.getAttribute('data-lang');
+      if(lang) {
+        localStorage.setItem('kalaba_lang', lang);
+        document.documentElement.lang = lang;
+        setTimeout(applyMobileNavLang, 30);
+      }
+    });
+  });
+
+  applyMobileNavLang();
+  window.addEventListener('storage', applyMobileNavLang);
 })();
 
 </script>

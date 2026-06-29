@@ -78,13 +78,15 @@
 <div class="card-actions"><a href="company.html" data-ru="Открыть" data-uk="Відкрити" data-es="Abrir" data-en="Open">Открыть</a><a class="secondary" href="request.html" data-ru="Заявка" data-uk="Заявка" data-es="Solicitud" data-en="Request">Заявка</a></div>
 </div></article></div></section>
 <section class="dashboard-row"><div class="panel"><h2 data-ru="Новые предложения" data-uk="Нові пропозиції" data-es="Nuevas ofertas" data-en="New offers">Новые предложения</h2><div class="offer"><b data-ru="Ремонт Барселона" data-uk="Ремонт Барселона" data-es="Reformas Barcelona" data-en="Renovation Barcelona">Ремонт Барселона</b><span>1 200 € · Барселона</span></div><div class="offer"><b data-ru="Клининг Севилья" data-uk="Клінінг Севілья" data-es="Limpieza Sevilla" data-en="Cleaning Seville">Клининг Севилья</b><span>85 € · Севилья</span></div></div><div class="panel"><h2 data-ru="Почему выбирают Kalaba?" data-uk="Чому обирають Kalaba?" data-es="¿Por qué eligen Kalaba?" data-en="Why choose Kalaba?">Почему выбирают Kalaba?</h2><div class="quote">✅ <b data-ru="Проверенные компании" data-uk="Перевірені компанії" data-es="Empresas verificadas" data-en="Verified companies">Проверенные компании</b><br><span data-ru="Мы проверяем каждую компанию перед публикацией." data-uk="Ми перевіряємо кожну компанію перед публікацією." data-es="Verificamos cada empresa antes de publicarla." data-en="We verify each company before publishing.">Мы проверяем каждую компанию перед публикацией.</span></div><div class="quote">🛡 <b data-ru="Безопасные сделки" data-uk="Безпечні угоди" data-es="Negocios seguros" data-en="Secure deals">Безопасные сделки</b><br><span data-ru="Ваши деньги защищены системой." data-uk="Ваші гроші захищені системою." data-es="Tu dinero está protegido por el sistema." data-en="Your money is protected by the system.">Ваши деньги защищены системой.</span></div></div></section> </main> 
+
 <nav class="mobile-nav">
-  <a href="index.html"><span>🏠</span>Главная</a>
-  <a href="search.html"><span>🔎</span>Поиск</a>
-  <a href="request.html"><span>📝</span>Заявка</a>
-  <a href="chat.html"><span>💬</span>Чат</a>
-  <a href="customer.html"><span>👤</span>Кабинет</a>
+  <a href="index.html"><span>🏠</span><em data-ru="Главная" data-uk="Головна" data-es="Inicio" data-en="Home">Главная</em></a>
+  <a href="search.html"><span>🔎</span><em data-ru="Поиск" data-uk="Пошук" data-es="Buscar" data-en="Search">Поиск</em></a>
+  <a href="request.html"><span>📝</span><em data-ru="Заявка" data-uk="Заявка" data-es="Solicitud" data-en="Request">Заявка</em></a>
+  <a href="chat.html"><span>💬</span><em data-ru="Чат" data-uk="Чат" data-es="Chat" data-en="Chat">Чат</em></a>
+  <a href="customer.html"><span>👤</span><em data-ru="Кабинет" data-uk="Кабінет" data-es="Cuenta" data-en="Account">Кабинет</em></a>
 </nav>
+
  <script src="app.js"></script>
 <script id="MOBILE_APP_MENU_SCRIPT"> (function(){ var menuButton = document.querySelector('.mobile-menu-button'); var closeButton = document.querySelector('.mobile-menu-close'); var backdrop = document.querySelector('.mobile-menu-backdrop'); if(menuButton){ menuButton.addEventListener('click', function(e){ e.preventDefault(); document.body.classList.add('mobile-menu-open'); }); } if(closeButton){ closeButton.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); } if(backdrop){ backdrop.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); } document.querySelectorAll('.mobile-menu-panel a').forEach(function(a){ a.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); });
 })(); </script>
@@ -335,6 +337,39 @@
       if(categoryFrom(el.textContent).toLowerCase() === normalized) el.classList.add('active');
     });
   }
+})();
+
+</script>
+<script id="MOBILE_NAV_LANGUAGE_SCRIPT">
+
+(function(){
+  function detectLang(){
+    return localStorage.getItem('kalaba_lang') ||
+      document.documentElement.lang ||
+      'ru';
+  }
+
+  function applyMobileNavLang(){
+    const lang = detectLang();
+    document.querySelectorAll('[data-ru][data-uk][data-es][data-en]').forEach(function(el){
+      const value = el.getAttribute('data-' + lang);
+      if(value) el.textContent = value;
+    });
+  }
+
+  document.querySelectorAll('.lang, [data-lang]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const lang = btn.dataset.lang || btn.getAttribute('data-lang');
+      if(lang) {
+        localStorage.setItem('kalaba_lang', lang);
+        document.documentElement.lang = lang;
+        setTimeout(applyMobileNavLang, 30);
+      }
+    });
+  });
+
+  applyMobileNavLang();
+  window.addEventListener('storage', applyMobileNavLang);
 })();
 
 </script>

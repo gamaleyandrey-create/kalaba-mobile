@@ -883,3 +883,13 @@ a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, 
     grid-template-columns: 1fr;
   }
 }
+
+/* === MOBILE NAV LANGUAGE LABELS === */
+@media (max-width: 980px) {
+  .mobile-nav a em {
+    font-style: normal;
+    display: block;
+    font-size: 11px;
+    line-height: 1.1;
+  }
+}
