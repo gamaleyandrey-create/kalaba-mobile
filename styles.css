@@ -1149,3 +1149,380 @@ a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, 
     color: var(--blue);
   }
 }
+
+
+/* === SEARCH + CHAT MOBILE FIX === */
+@media (max-width: 980px) {
+  .search-mobile-page,
+  .chat-mobile-page {
+    margin: 14px 12px 96px;
+  }
+
+  .search-hero-card,
+  .chat-header-card {
+    background: linear-gradient(135deg, #eff6ff, #ffffff);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 0 14px 38px rgba(16,24,40,.08);
+    margin-bottom: 14px;
+  }
+
+  .search-hero-card h1,
+  .chat-header-card h1 {
+    font-size: 28px;
+    line-height: 1.1;
+    margin: 0 0 8px;
+  }
+
+  .search-hero-card p,
+  .chat-header-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .search-filter-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 0 12px 32px rgba(16,24,40,.07);
+    margin-bottom: 14px;
+  }
+
+  .search-filter-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .search-filter-card label {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 7px;
+  }
+
+  .search-filter-card input,
+  .search-filter-card select {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 12px 14px;
+    font-size: 16px;
+    background: #fff;
+  }
+
+  .search-filter-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-top: 12px;
+  }
+
+  .search-filter-actions button,
+  .search-filter-actions a {
+    min-height: 48px;
+    border-radius: 16px;
+    border: 0;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-weight: 900;
+  }
+
+  .search-filter-actions .primary {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .search-filter-actions .secondary {
+    background: var(--soft);
+    color: var(--blue);
+  }
+
+  .quick-filters {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 0 8px;
+    margin-bottom: 12px;
+  }
+
+  .quick-filters button {
+    flex: 0 0 auto;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 13px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .quick-filters button.active {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+  }
+
+  .search-results-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 12px 2px;
+  }
+
+  .search-results-head h2 {
+    font-size: 21px;
+    margin: 0;
+  }
+
+  .search-results-head span {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .search-company-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .search-company-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(16,24,40,.07);
+  }
+
+  .search-company-photo {
+    height: 124px;
+    background: linear-gradient(135deg, #dbeafe, #cffafe);
+  }
+
+  .search-company-body {
+    padding: 14px;
+  }
+
+  .search-company-body h3 {
+    font-size: 20px;
+    margin: 0 0 7px;
+  }
+
+  .search-company-body p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 0 0 10px;
+  }
+
+  .search-company-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 12px;
+  }
+
+  .search-company-meta span {
+    background: var(--soft);
+    color: var(--blue);
+    border-radius: 999px;
+    padding: 6px 9px;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .search-company-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .search-company-actions a {
+    min-height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-weight: 900;
+  }
+
+  .search-company-actions .primary {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .search-company-actions .secondary {
+    background: var(--soft);
+    color: var(--blue);
+  }
+
+  .chat-shell {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 14px 38px rgba(16,24,40,.08);
+  }
+
+  .chat-company-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-bottom: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .chat-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--blue), #06b6d4);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    flex: 0 0 auto;
+  }
+
+  .chat-company-bar b {
+    display: block;
+    font-size: 16px;
+  }
+
+  .chat-company-bar span {
+    display: block;
+    color: #16a34a;
+    font-size: 12px;
+    font-weight: 900;
+    margin-top: 3px;
+  }
+
+  .chat-deal-card {
+    margin: 12px;
+    background: #f8fbff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 14px;
+  }
+
+  .chat-deal-card b {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .chat-deal-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.45;
+    margin: 0 0 10px;
+  }
+
+  .chat-deal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .chat-deal-actions a {
+    min-height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 900;
+  }
+
+  .chat-deal-actions .primary {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .chat-deal-actions .secondary {
+    background: var(--soft);
+    color: var(--blue);
+  }
+
+  .chat-messages-mobile {
+    padding: 12px;
+    display: grid;
+    gap: 10px;
+    max-height: 48vh;
+    overflow-y: auto;
+    background: #f8fafc;
+  }
+
+  .message {
+    max-width: 82%;
+    padding: 11px 13px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .message.in {
+    background: #fff;
+    border: 1px solid var(--line);
+    justify-self: start;
+  }
+
+  .message.out {
+    background: var(--blue);
+    color: #fff;
+    justify-self: end;
+  }
+
+  .chat-quick-actions {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 12px;
+    border-top: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .chat-quick-actions button {
+    flex: 0 0 auto;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 12px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .chat-input-bar {
+    display: grid;
+    grid-template-columns: 42px 1fr 48px;
+    gap: 8px;
+    padding: 12px;
+    background: #fff;
+    border-top: 1px solid var(--line);
+  }
+
+  .chat-input-bar button {
+    border: 0;
+    border-radius: 14px;
+    background: var(--soft);
+    color: var(--blue);
+    font-weight: 900;
+    font-size: 18px;
+  }
+
+  .chat-input-bar .send {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .chat-input-bar input {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0 12px;
+    font-size: 16px;
+  }
+}
