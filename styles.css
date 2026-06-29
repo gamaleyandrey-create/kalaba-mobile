@@ -640,3 +640,23 @@ button:active,
     overflow-y: auto;
   }
 }
+
+/* === CATEGORY ROUTING ACTIVE STATE === */
+.chips a.active,
+.category-grid article.active {
+  border-color: var(--blue) !important;
+  color: var(--blue) !important;
+  background: var(--soft) !important;
+}
+
+/* === CLEAN LINKS ROUTING UPDATE === */
+.chips a.active,
+.category-grid article.active,
+.category-grid a.active {
+  border-color: var(--blue) !important;
+  color: var(--blue) !important;
+  background: var(--soft) !important;
+}
+a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, .price-grid article, .kanban div, .kanban article, .review-grid article {
+  cursor: pointer;
+}
