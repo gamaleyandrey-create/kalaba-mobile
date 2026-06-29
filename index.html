@@ -95,7 +95,7 @@
       <input id="heroManualCity" placeholder="Например: Benidorm, Sitges">
     </div>
 
-    <div class="hero-field hero-postcode active">
+    <div class="hero-field hero-postcode">
       <label for="heroPostcode">Почтовый индекс</label>
       <input id="heroPostcode" inputmode="numeric" maxlength="5" placeholder="Например: 28013">
     </div>
@@ -634,110 +634,100 @@
 })();
 
 </script>
-<script id="HERO_CLEAN_FIELDS_SCRIPT">
+<script id="CONDITIONAL_HERO_FINAL_SCRIPT">
 
 (function(){
-  const postcodeCity = {
-    '28': 'Мадрид', '08': 'Барселона', '46': 'Валенсия', '41': 'Севилья',
-    '29': 'Малага', '03': 'Аликанте', '30': 'Мурсия', '50': 'Сарагоса',
-    '48': 'Бильбао', '07': 'Пальма-де-Майорка', '35': 'Лас-Пальмас',
-    '18': 'Гранада', '14': 'Кордова', '36': 'Виго', '47': 'Вальядолид',
-    '33': 'Овьедо', '20': 'Сан-Себастьян', '31': 'Памплона', '11': 'Кадис',
-    '43': 'Таррагона', '37': 'Саламанка', '45': 'Толедо', '17': 'Жирона',
-    '24': 'Леон', '09': 'Бургос', '04': 'Альмерия', '12': 'Кастельон',
-    '38': 'Санта-Крус-де-Тенерифе'
-  };
-
-  function setupHero(){
+  function setupConditionalHero(){
     const hero = document.querySelector('.hero-search.kalaba-clean-hero');
     if(!hero) return;
 
-    const cat = document.getElementById('heroCategory');
+    const category = document.getElementById('heroCategory');
     const city = document.getElementById('heroCity');
-    const manualService = document.getElementById('heroManualService');
-    const manualCity = document.getElementById('heroManualCity');
-    const postcode = document.getElementById('heroPostcode');
     const extra = hero.querySelector('.hero-extra-fields');
     const serviceField = hero.querySelector('.hero-other-service');
     const cityField = hero.querySelector('.hero-other-city');
     const postcodeField = hero.querySelector('.hero-postcode');
+    const serviceInput = document.getElementById('heroManualService');
+    const cityInput = document.getElementById('heroManualCity');
+    const postcodeInput = document.getElementById('heroPostcode');
     const submit = hero.querySelector('.hero-submit');
 
     function isOtherCategory(){
-      return cat && cat.value === 'Другое';
+      return category && category.value === 'Другое';
     }
 
     function isOtherCity(){
       return city && city.value === 'Другой город';
     }
 
-    function updateVisibility(){
-      serviceField.classList.toggle('active', isOtherCategory());
-      cityField.classList.toggle('active', isOtherCity());
-      postcodeField.classList.add('active');
-      extra.classList.toggle('active', isOtherCategory() || isOtherCity() || true);
+    function updateFields(){
+      const showService = isOtherCategory();
+      const showCity = isOtherCity();
 
-      if(manualService) manualService.required = isOtherCategory();
-      if(manualCity) manualCity.required = isOtherCity();
+      serviceField && serviceField.classList.toggle('active', showService);
+      cityField && cityField.classList.toggle('active', showCity);
+      postcodeField && postcodeField.classList.toggle('active', showCity);
+
+      if(extra) extra.classList.toggle('active', showService || showCity);
+
+      if(serviceInput) {
+        serviceInput.required = showService;
+        if(!showService) serviceInput.value = '';
+      }
+
+      if(cityInput) {
+        cityInput.required = showCity;
+        if(!showCity) cityInput.value = '';
+      }
+
+      if(postcodeInput) {
+        postcodeInput.required = false;
+        if(!showCity) postcodeInput.value = '';
+      }
     }
 
-    cat.addEventListener('change', updateVisibility);
-    city.addEventListener('change', updateVisibility);
+    if(category) category.addEventListener('change', updateFields);
+    if(city) city.addEventListener('change', updateFields);
 
-    if(postcode){
-      postcode.addEventListener('input', function(){
-        const found = postcodeCity[postcode.value.trim().slice(0,2)];
-        if(found && city){
-          city.value = found;
-          city.dispatchEvent(new Event('change'));
-        }
-      });
-    }
-
-    document.querySelectorAll('.chips a, .request-chip-row button, .quick-filters button').forEach(function(chip){
-      chip.addEventListener('click', function(e){
-        const selected = chip.dataset.category || chip.textContent;
-        if(cat){
-          if(selected.includes('Другое')) cat.value = 'Другое';
-          else if(selected.includes('Ремонт')) cat.value = 'Ремонт и отделка';
-          else if(selected.includes('Сантехника')) cat.value = 'Сантехника';
-          else if(selected.includes('Электрика')) cat.value = 'Электрика';
-          else if(selected.includes('Переезд')) cat.value = 'Переезды';
-          else if(selected.includes('Клининг')) cat.value = 'Клининг';
-          else if(selected.includes('Сад')) cat.value = 'Сад и ландшафт';
-          updateVisibility();
-        }
-      }, true);
-    });
-
-    if(submit){
+    if(submit) {
       submit.addEventListener('click', function(e){
         e.preventDefault();
+
+        let selectedCategory = category ? category.value : '';
+        let selectedCity = city ? city.value : '';
+
+        if(selectedCategory === 'Другое') {
+          const manual = serviceInput ? serviceInput.value.trim() : '';
+          if(!manual) {
+            serviceInput && serviceInput.focus();
+            return;
+          }
+          selectedCategory = manual;
+        }
+
+        if(selectedCity === 'Другой город') {
+          const manualCity = cityInput ? cityInput.value.trim() : '';
+          if(!manualCity) {
+            cityInput && cityInput.focus();
+            return;
+          }
+          selectedCity = manualCity;
+        }
+
         const params = new URLSearchParams();
-        let category = cat.value;
-        let selectedCity = city.value;
-
-        if(category === 'Другое' && manualService.value.trim()) {
-          category = manualService.value.trim();
-        }
-
-        if(selectedCity === 'Другой город' && manualCity.value.trim()) {
-          selectedCity = manualCity.value.trim();
-        }
-
-        if(category) params.set('category', category);
+        if(selectedCategory) params.set('category', selectedCategory);
         if(selectedCity) params.set('city', selectedCity);
-        if(postcode && postcode.value.trim()) params.set('postcode', postcode.value.trim());
+        if(postcodeInput && postcodeInput.value.trim()) params.set('postcode', postcodeInput.value.trim());
 
-        window.location.href = 'search.html?' + params.toString();
+        window.location.href = 'search.html' + (params.toString() ? '?' + params.toString() : '');
       }, true);
     }
 
-    updateVisibility();
+    updateFields();
   }
 
-  document.addEventListener('DOMContentLoaded', setupHero);
-  setupHero();
+  document.addEventListener('DOMContentLoaded', setupConditionalHero);
+  setupConditionalHero();
 })();
 
 </script>
