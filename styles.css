@@ -2118,3 +2118,24 @@ a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, 
     display: grid !important;
   }
 }
+
+/* === REQUEST STEPS FIX === */
+@media (max-width: 980px){
+  .request-step-content{display:none}
+  .request-step-content.active{display:block}
+  .request-progress{position:sticky;top:72px;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(12px)}
+  .request-step-dot{cursor:pointer}
+  .request-step-dot.done i{background:#16a34a!important}
+  .request-step-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .request-step-actions button,.request-step-actions a{min-height:52px;border:0;border-radius:17px;display:grid;place-items:center;text-decoration:none;font-weight:900;font-size:15px}
+  .request-step-actions .primary{background:var(--blue);color:#fff}
+  .request-step-actions .secondary{background:var(--soft);color:var(--blue)}
+  .request-summary-box{background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}
+  .request-summary-box div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid rgba(15,23,42,.06);font-size:14px}
+  .request-summary-box div:last-child{border-bottom:0}
+  .request-summary-box span{color:var(--muted);text-align:right}
+  .request-offer-preview{display:grid;gap:10px}
+  .request-offer-preview article{background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:14px}
+  .request-offer-preview b{display:block;font-size:16px;margin-bottom:5px}
+  .request-offer-preview span{display:block;color:var(--muted);font-size:13px;line-height:1.45}
+}
