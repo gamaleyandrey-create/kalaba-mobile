@@ -61,7 +61,7 @@
       <button type="button" data-category="Переезды">🚚 Переезды</button>
       <button type="button" data-category="Электрика">⚡ Электрика</button>
       <button type="button" data-category="Сад и ландшафт">🌿 Сад</button>
-    </div>
+    <button type="button" data-category="Другое">➕ Другое</button></div>
 
     <div class="request-field-clean">
       <label for="category" data-i18n="category">Категория</label>
@@ -72,7 +72,8 @@
         <option>Переезды</option>
         <option>Электрика</option>
         <option>Сад и ландшафт</option>
-      </select>
+      <option>Другое</option></select>
+      <div class="other-service-field"><label data-other-i18n="other_label">Опишите услугу</label><input id="otherService" placeholder="Например: монтаж стеклянного навеса"></div>
     </div>
 
     <div class="request-two">
@@ -184,7 +185,7 @@
 
   document.getElementById('submitRequest').addEventListener('click', () => {
     const params = new URLSearchParams();
-    params.set('category', category.value);
+    params.set('category', (category.value === 'Другое' && document.getElementById('otherService') && document.getElementById('otherService').value.trim()) ? document.getElementById('otherService').value.trim() : category.value);
     params.set('city', document.getElementById('city').value);
     params.set('budget', document.getElementById('budget').value);
     window.location.href = 'offers.html?' + params.toString();
@@ -386,6 +387,286 @@
 
   window.KalabaI18n = { setLang, applyLang, dict };
   applyLang();
+})();
+
+</script>
+<script id="HOME_FIELDS_FIX_SCRIPT">
+
+(function(){
+  const translations = {
+    ru: {
+      category_label: 'Категория',
+      city_label: 'Город',
+      category_placeholder: 'Выберите категорию',
+      city_placeholder: 'Укажите город: Мадрид, Барселона...',
+      find: 'Найти'
+    },
+    uk: {
+      category_label: 'Категорія',
+      city_label: 'Місто',
+      category_placeholder: 'Оберіть категорію',
+      city_placeholder: 'Вкажіть місто: Мадрид, Барселона...',
+      find: 'Знайти'
+    },
+    es: {
+      category_label: 'Categoría',
+      city_label: 'Ciudad',
+      category_placeholder: 'Elige categoría',
+      city_placeholder: 'Indica ciudad: Madrid, Barcelona...',
+      find: 'Buscar'
+    },
+    en: {
+      category_label: 'Category',
+      city_label: 'City',
+      category_placeholder: 'Choose category',
+      city_placeholder: 'Enter city: Madrid, Barcelona...',
+      find: 'Search'
+    }
+  };
+
+  function lang(){
+    return localStorage.getItem('kalaba_lang') || document.documentElement.lang || 'ru';
+  }
+
+  function fixHeroFields(){
+    const hero = document.querySelector('.hero-search');
+    if(!hero) return;
+
+    const select = hero.querySelector('select');
+    const input = hero.querySelector('input');
+    const button = hero.querySelector('a, button');
+
+    if(select && !select.closest('.hero-field-wrap')){
+      const wrap = document.createElement('div');
+      wrap.className = 'hero-field-wrap';
+      const label = document.createElement('label');
+      label.className = 'hero-field-label';
+      label.setAttribute('data-home-i18n', 'category_label');
+      label.textContent = 'Категория';
+      select.parentNode.insertBefore(wrap, select);
+      wrap.appendChild(label);
+      wrap.appendChild(select);
+    }
+
+    if(input && !input.closest('.hero-field-wrap')){
+      const wrap = document.createElement('div');
+      wrap.className = 'hero-field-wrap';
+      const label = document.createElement('label');
+      label.className = 'hero-field-label';
+      label.setAttribute('data-home-i18n', 'city_label');
+      label.textContent = 'Город';
+      input.parentNode.insertBefore(wrap, input);
+      wrap.appendChild(label);
+      wrap.appendChild(input);
+    }
+
+    if(button){
+      button.setAttribute('data-home-i18n', 'find');
+      button.addEventListener('click', function(e){
+        e.preventDefault();
+        const params = new URLSearchParams();
+        if(select && select.value && !/выберите|оберіть|elige|choose/i.test(select.value)) params.set('category', select.value);
+        if(input && input.value) params.set('city', input.value);
+        window.location.href = 'search.html' + (params.toString() ? '?' + params.toString() : '');
+      }, true);
+    }
+
+    applyHomeLang();
+  }
+
+  function applyHomeLang(){
+    const l = lang();
+    const d = translations[l] || translations.ru;
+
+    document.querySelectorAll('[data-home-i18n]').forEach(el => {
+      const key = el.getAttribute('data-home-i18n');
+      if(d[key]) el.textContent = d[key];
+    });
+
+    const hero = document.querySelector('.hero-search');
+    if(!hero) return;
+
+    const input = hero.querySelector('input');
+    const select = hero.querySelector('select');
+    const button = hero.querySelector('a, button');
+
+    if(input) input.placeholder = d.city_placeholder;
+    if(button) button.textContent = d.find;
+
+    if(select){
+      const first = select.options[0];
+      if(first && /выберите|оберіть|elige|choose/i.test(first.textContent)){
+        first.textContent = d.category_placeholder;
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', fixHeroFields);
+  fixHeroFields();
+
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.lang, [data-lang]')){
+      setTimeout(applyHomeLang, 60);
+    }
+  }, true);
+
+  window.addEventListener('storage', applyHomeLang);
+})();
+
+</script>
+<script id="OTHER_CATEGORY_SCRIPT">
+
+(function(){
+  const labels = {
+    ru: {
+      other: 'Другое',
+      other_label: 'Опишите услугу',
+      other_placeholder: 'Например: монтаж стеклянного навеса, настройка техники, нестандартная работа'
+    },
+    uk: {
+      other: 'Інше',
+      other_label: 'Опишіть послугу',
+      other_placeholder: 'Наприклад: монтаж скляного навісу, налаштування техніки, нестандартна робота'
+    },
+    es: {
+      other: 'Otro',
+      other_label: 'Describe el servicio',
+      other_placeholder: 'Por ejemplo: instalación de una marquesina de vidrio, configuración de equipos, trabajo especial'
+    },
+    en: {
+      other: 'Other',
+      other_label: 'Describe the service',
+      other_placeholder: 'For example: glass canopy installation, device setup, custom work'
+    }
+  };
+
+  function lang(){
+    return localStorage.getItem('kalaba_lang') || document.documentElement.lang || 'ru';
+  }
+
+  function isOther(value){
+    return /другое|інше|otro|other/i.test(value || '');
+  }
+
+  function ensureOtherOption(select){
+    if(!select) return;
+    const hasOther = Array.from(select.options).some(o => isOther(o.value || o.textContent));
+    if(!hasOther){
+      const opt = document.createElement('option');
+      opt.value = 'Другое';
+      opt.textContent = labels[lang()].other;
+      select.appendChild(opt);
+    }
+  }
+
+  function ensureOtherField(afterEl, textarea){
+    if(!afterEl) return null;
+    let container = afterEl.parentElement.querySelector('.other-service-field');
+    if(!container){
+      container = document.createElement('div');
+      container.className = 'other-service-field';
+      container.innerHTML = textarea
+        ? '<label data-other-i18n="other_label">Опишите услугу</label><textarea id="otherService" placeholder="Например: монтаж стеклянного навеса, настройка техники, нестандартная работа"></textarea>'
+        : '<label data-other-i18n="other_label">Опишите услугу</label><input id="otherService" placeholder="Например: монтаж стеклянного навеса">';
+      afterEl.parentElement.appendChild(container);
+    }
+    return container;
+  }
+
+  function applyOtherLang(){
+    const l = lang();
+    const d = labels[l] || labels.ru;
+    document.querySelectorAll('[data-other-i18n="other_label"]').forEach(el => el.textContent = d.other_label);
+    document.querySelectorAll('#otherService').forEach(el => el.placeholder = d.other_placeholder);
+    document.querySelectorAll('select option').forEach(opt => {
+      if(isOther(opt.value) || isOther(opt.textContent)){
+        opt.value = 'Другое';
+        opt.textContent = d.other;
+      }
+    });
+    document.querySelectorAll('[data-category="Другое"]').forEach(btn => {
+      const prefix = btn.textContent.match(/^[^\p{L}\p{N}]*/u)?.[0] || '';
+      btn.textContent = (prefix || '➕ ') + d.other;
+    });
+  }
+
+  function setupSelect(select){
+    ensureOtherOption(select);
+    const wrapper = select.closest('.request-field-clean, .hero-field-wrap, .search-filter-grid > div, .request-field, div') || select.parentElement;
+    let field = wrapper.querySelector('.other-service-field');
+    if(!field){
+      field = document.createElement('div');
+      field.className = 'other-service-field';
+      field.innerHTML = '<label data-other-i18n="other_label">Опишите услугу</label><input id="otherService" placeholder="Например: монтаж стеклянного навеса">';
+      wrapper.appendChild(field);
+    }
+
+    function toggle(){
+      field.classList.toggle('active', isOther(select.value));
+      const input = field.querySelector('input, textarea');
+      if(input) input.required = isOther(select.value);
+    }
+
+    select.addEventListener('change', toggle);
+    toggle();
+  }
+
+  function setupChips(){
+    const rows = document.querySelectorAll('.request-chip-row, .quick-filters');
+    rows.forEach(row => {
+      if(!row.querySelector('[data-category="Другое"]')){
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.category = 'Другое';
+        btn.textContent = '➕ ' + (labels[lang()] || labels.ru).other;
+        row.appendChild(btn);
+      }
+    });
+  }
+
+  function setupForms(){
+    document.querySelectorAll('select').forEach(select => {
+      const text = (select.closest('form, section, main') || document.body).textContent;
+      if(/категор|категорія|categor|category/i.test(text) || select.id === 'category' || select.id === 'searchCategory'){
+        setupSelect(select);
+      }
+    });
+
+    setupChips();
+
+    document.querySelectorAll('.request-chip-row button, .quick-filters button').forEach(btn => {
+      btn.addEventListener('click', function(){
+        const category = btn.dataset.category || btn.textContent;
+        const select = document.querySelector('#category, #searchCategory, .hero-search select');
+        if(select){
+          ensureOtherOption(select);
+          if(isOther(category)) select.value = 'Другое';
+          else select.value = category;
+          select.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+
+    // Submit/search should pass custom category text when "Other" selected
+    document.querySelectorAll('#submitRequest, #applySearch, .hero-search a, .hero-search button').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        const select = document.querySelector('#category, #searchCategory, .hero-search select');
+        const other = document.querySelector('#otherService');
+        if(select && isOther(select.value) && other && other.value.trim()){
+          select.dataset.manualCategory = other.value.trim();
+        }
+      }, true);
+    });
+
+    applyOtherLang();
+  }
+
+  document.addEventListener('DOMContentLoaded', setupForms);
+  setupForms();
+
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.lang, [data-lang]')) setTimeout(applyOtherLang, 60);
+  }, true);
 })();
 
 </script>

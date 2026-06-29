@@ -1787,3 +1787,103 @@ a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, 
     font-size: 28px;
   }
 }
+
+
+/* === HOME CATEGORY + CITY FIELDS FIX === */
+@media (max-width: 980px) {
+  .hero-search {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .hero-search select,
+  .hero-search input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 54px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 18px !important;
+    background: rgba(255,255,255,.94) !important;
+    padding: 0 16px !important;
+    font-size: 16px !important;
+    color: var(--text) !important;
+    outline: none !important;
+    box-shadow: 0 8px 22px rgba(16,24,40,.06);
+  }
+
+  .hero-search input::placeholder {
+    color: #7b8799;
+  }
+
+  .hero-search a,
+  .hero-search button {
+    width: 100% !important;
+    min-height: 54px !important;
+    border-radius: 18px !important;
+    display: grid !important;
+    place-items: center !important;
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+    background: var(--blue) !important;
+    color: #fff !important;
+    border: 0 !important;
+  }
+
+  .hero-field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    margin: 0 0 7px 2px;
+    color: var(--text);
+  }
+
+  .hero-field-wrap {
+    width: 100%;
+  }
+}
+
+
+/* === OTHER CATEGORY MANUAL INPUT === */
+@media (max-width: 980px) {
+  .other-service-field {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .other-service-field.active {
+    display: block;
+  }
+
+  .other-service-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 7px;
+  }
+
+  .other-service-field input,
+  .other-service-field textarea {
+    width: 100% !important;
+    box-sizing: border-box;
+    min-height: 52px;
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    padding: 14px;
+    background: #fff;
+    font-size: 16px !important;
+    outline: none;
+  }
+
+  .other-service-field textarea {
+    min-height: 96px;
+    resize: vertical;
+  }
+
+  .request-chip-row button[data-category="Другое"],
+  .quick-filters button[data-category="Другое"] {
+    border-style: dashed;
+  }
+}
