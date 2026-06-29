@@ -12,7 +12,7 @@
     <span class="mobile-brand-logo" aria-label="Kalaba"></span>
     <span class="mobile-brand-title">
       <b>Kalaba</b>
-      <span>Маркетплейс услуг в Испании</span>
+      <span data-i18n="app_subtitle">Маркетплейс услуг в Испании</span>
     </span>
   </a>
   <div class="mobile-brand-actions">
@@ -26,33 +26,33 @@
     <b>Kalaba</b>
     <button class="mobile-menu-close" type="button">×</button>
   </div>
-  <a href="index.html">🏠 Главная</a>
-  <a href="search.html">🔎 Поиск услуг</a>
-  <a href="catalog.html">🏢 Каталог компаний</a>
-  <a href="request.html">📝 Создать заявку</a>
-  <a href="offers.html">💬 Предложения</a>
-  <a href="chat.html">💭 Чат</a>
-  <a href="deal.html">🤝 Сделка</a>
-  <a href="payment.html">💳 Оплата</a>
-  <a href="map.html">🗺 Карта Испании</a>
+  <a href="index.html">🏠 <span data-i18n="menu_home">Главная</span></a>
+  <a href="search.html">🔎 <span data-i18n="menu_search">Поиск услуг</span></a>
+  <a href="catalog.html">🏢 <span data-i18n="menu_catalog">Каталог компаний</span></a>
+  <a href="request.html">📝 <span data-i18n="menu_request">Создать заявку</span></a>
+  <a href="offers.html">💬 <span data-i18n="menu_offers">Предложения</span></a>
+  <a href="chat.html">💭 <span data-i18n="menu_chat">Чат</span></a>
+  <a href="deal.html">🤝 <span data-i18n="menu_deal">Сделка</span></a>
+  <a href="payment.html">💳 <span data-i18n="menu_payment">Оплата</span></a>
+  <a href="map.html">🗺 <span data-i18n="menu_map">Карта Испании</span></a>
 </aside>
 
 <main class="request-clean-page">
   <section class="request-clean-hero">
-    <h1>Создать заявку</h1>
-    <p>Опишите задачу, выберите город и бюджет. Компании отправят вам предложения.</p>
+    <h1 data-i18n="create_request">Создать заявку</h1>
+    <p data-i18n="request_intro">Опишите задачу, выберите город и бюджет. Компании отправят вам предложения.</p>
   </section>
 
   <section class="request-progress">
     <div class="request-progress-line">
-      <div class="request-step-dot active"><i>1</i><span>Услуга</span></div>
-      <div class="request-step-dot"><i>2</i><span>Детали</span></div>
-      <div class="request-step-dot"><i>3</i><span>Предложения</span></div>
+      <div class="request-step-dot active"><i>1</i><span data-i18n="step_service">Услуга</span></div>
+      <div class="request-step-dot"><i>2</i><span data-i18n="step_details">Детали</span></div>
+      <div class="request-step-dot"><i>3</i><span data-i18n="step_offers">Предложения</span></div>
     </div>
   </section>
 
   <form class="request-form-clean" id="requestForm">
-    <h2>Что нужно сделать?</h2>
+    <h2 data-i18n="what_needed">Что нужно сделать?</h2>
 
     <div class="request-chip-row">
       <button type="button" class="active" data-category="Ремонт и отделка">🛠 Ремонт</button>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="request-field-clean">
-      <label for="category">Категория</label>
+      <label for="category" data-i18n="category">Категория</label>
       <select id="category">
         <option>Ремонт и отделка</option>
         <option>Сантехника</option>
@@ -77,7 +77,7 @@
 
     <div class="request-two">
       <div class="request-field-clean">
-        <label for="city">Город</label>
+        <label for="city" data-i18n="city">Город</label>
         <select id="city">
           <option>Мадрид</option>
           <option>Барселона</option>
@@ -89,7 +89,7 @@
       </div>
 
       <div class="request-field-clean">
-        <label for="budget">Бюджет</label>
+        <label for="budget" data-i18n="budget">Бюджет</label>
         <select id="budget">
           <option>До 100 €</option>
           <option>100–500 €</option>
@@ -101,13 +101,13 @@
     </div>
 
     <div class="request-field-clean">
-      <label for="address">Адрес или район</label>
+      <label for="address" data-i18n="address">Адрес или район</label>
       <input id="address" value="Calle de Alcalá, 45, Madrid" placeholder="Например: Calle de Alcalá, 45, Madrid">
     </div>
 
     <div class="request-two">
       <div class="request-field-clean">
-        <label for="date">Когда начать</label>
+        <label for="date" data-i18n="start_when">Когда начать</label>
         <select id="date">
           <option>Как можно скорее</option>
           <option>На этой неделе</option>
@@ -117,7 +117,7 @@
       </div>
 
       <div class="request-field-clean">
-        <label for="contact">Связь</label>
+        <label for="contact" data-i18n="contact">Связь</label>
         <select id="contact">
           <option>Чат Kalaba</option>
           <option>Телефон</option>
@@ -127,40 +127,40 @@
     </div>
 
     <div class="request-field-clean">
-      <label for="description">Описание работ</label>
+      <label for="description" data-i18n="description">Описание работ</label>
       <textarea id="description">Нужно выполнить работы в квартире. Хочу получить несколько предложений от проверенных компаний.</textarea>
     </div>
 
     <div class="request-upload-clean">
       <div>
         <div style="font-size:32px">📷</div>
-        <strong>Добавить фото</strong>
-        <span>Фото, документы или примеры работ</span>
+        <strong data-i18n="add_photo">Добавить фото</strong>
+        <span data-i18n="photo_docs">Фото, документы или примеры работ</span>
       </div>
     </div>
   </form>
 
   <section class="request-next-card">
-    <h2>Что произойдёт дальше?</h2>
+    <h2 data-i18n="next_title">Что произойдёт дальше?</h2>
     <ul>
-      <li>Компании увидят вашу заявку.</li>
-      <li>Вы получите цены и сроки выполнения.</li>
-      <li>Сможете перейти в чат и оформить сделку.</li>
-      <li>Оплата будет проходить безопасно через Kalaba.</li>
+      <li data-i18n="next_1">Компании увидят вашу заявку.</li>
+      <li data-i18n="next_2">Вы получите цены и сроки выполнения.</li>
+      <li data-i18n="next_3">Сможете перейти в чат и оформить сделку.</li>
+      <li data-i18n="next_4">Оплата будет проходить безопасно через Kalaba.</li>
     </ul>
   </section>
 
   <div class="request-main-submit">
-    <button type="button" id="submitRequest">Получить предложения</button>
+    <button type="button" id="submitRequest" data-i18n="get_offers">Получить предложения</button>
   </div>
 </main>
 
 <nav class="mobile-nav">
-  <a href="index.html"><span>🏠</span><em data-ru="Главная" data-uk="Головна" data-es="Inicio" data-en="Home">Главная</em></a>
-  <a href="search.html"><span>🔎</span><em data-ru="Поиск" data-uk="Пошук" data-es="Buscar" data-en="Search">Поиск</em></a>
-  <a href="request.html"><span>📝</span><em data-ru="Заявка" data-uk="Заявка" data-es="Solicitud" data-en="Request">Заявка</em></a>
-  <a href="chat.html"><span>💬</span><em data-ru="Чат" data-uk="Чат" data-es="Chat" data-en="Chat">Чат</em></a>
-  <a href="customer.html"><span>👤</span><em data-ru="Кабинет" data-uk="Кабінет" data-es="Cuenta" data-en="Account">Кабинет</em></a>
+  <a href="index.html"><span>🏠</span><em data-i18n="home" data-ru="Главная" data-uk="Головна" data-es="Inicio" data-en="Home">Главная</em></a>
+  <a href="search.html"><span>🔎</span><em data-i18n="search" data-ru="Поиск" data-uk="Пошук" data-es="Buscar" data-en="Search">Поиск</em></a>
+  <a href="request.html"><span>📝</span><em data-i18n="request" data-ru="Заявка" data-uk="Заявка" data-es="Solicitud" data-en="Request">Заявка</em></a>
+  <a href="chat.html"><span>💬</span><em data-i18n="chat" data-ru="Чат" data-uk="Чат" data-es="Chat" data-en="Chat">Чат</em></a>
+  <a href="customer.html"><span>👤</span><em data-i18n="account" data-ru="Кабинет" data-uk="Кабінет" data-es="Cuenta" data-en="Account">Кабинет</em></a>
 </nav>
 
 <script src="app.js"></script>
@@ -190,6 +190,204 @@
     window.location.href = 'offers.html?' + params.toString();
   });
 })();
+</script>
+<script id="KALABA_FULL_I18N_SCRIPT">
+
+(function(){
+  const dict = {
+    ru: {
+      app_subtitle: 'Маркетплейс услуг в Испании',
+      home: 'Главная', search: 'Поиск', request: 'Заявка', chat: 'Чат', account: 'Кабинет',
+      create_request: 'Создать заявку',
+      request_intro: 'Опишите задачу, выберите город и бюджет. Компании отправят вам предложения.',
+      step_service: 'Услуга', step_details: 'Детали', step_offers: 'Предложения',
+      what_needed: 'Что нужно сделать?',
+      category: 'Категория', city: 'Город', budget: 'Бюджет', address: 'Адрес или район',
+      start_when: 'Когда начать', contact: 'Связь', description: 'Описание работ',
+      add_photo: 'Добавить фото', photo_docs: 'Фото, документы или примеры работ',
+      next_title: 'Что произойдёт дальше?',
+      next_1: 'Компании увидят вашу заявку.',
+      next_2: 'Вы получите цены и сроки выполнения.',
+      next_3: 'Сможете перейти в чат и оформить сделку.',
+      next_4: 'Оплата будет проходить безопасно через Kalaba.',
+      get_offers: 'Получить предложения',
+      search_services: 'Поиск услуг',
+      search_intro: 'Выберите категорию, город и найдите проверенные компании рядом с вами.',
+      find: 'Найти', all_companies: 'Все компании', results: 'Результаты',
+      sort: 'Сортировка', by_rating: 'По рейтингу', by_price: 'По цене', quick_reply: 'Быстрый ответ', today: 'Работают сегодня',
+      open: 'Открыть', company_chat: 'Чат',
+      chat_title: 'Чат по заявке',
+      chat_intro: 'Обсудите детали, получите предложение и перейдите к безопасной сделке.',
+      online: 'онлайн · обычно отвечает за 15 минут',
+      offer_card: 'Предложение по заявке',
+      offer_text: 'Ремонт и сантехника в Мадриде. Срок: 3 дня. Предварительная цена: 480 €.',
+      compare: 'Сравнить', accept: 'Принять', message_placeholder: 'Сообщение...',
+      estimate: 'Смета', date: 'Дата', price: 'Цена',
+      company_verified: 'Проверенная компания', response_15: 'Ответ за 15 минут',
+      make_request: 'Создать заявку', write: 'Написать', services: 'Услуги',
+      about_company: 'О компании', reviews: 'Отзывы', order: 'Заказать',
+      menu_home: 'Главная', menu_search: 'Поиск услуг', menu_catalog: 'Каталог компаний',
+      menu_request: 'Создать заявку', menu_offers: 'Предложения', menu_chat: 'Чат',
+      menu_deal: 'Сделка', menu_payment: 'Оплата', menu_map: 'Карта Испании'
+    },
+    uk: {
+      app_subtitle: 'Маркетплейс послуг в Іспанії',
+      home: 'Головна', search: 'Пошук', request: 'Заявка', chat: 'Чат', account: 'Кабінет',
+      create_request: 'Створити заявку',
+      request_intro: 'Опишіть задачу, виберіть місто та бюджет. Компанії надішлють вам пропозиції.',
+      step_service: 'Послуга', step_details: 'Деталі', step_offers: 'Пропозиції',
+      what_needed: 'Що потрібно зробити?',
+      category: 'Категорія', city: 'Місто', budget: 'Бюджет', address: 'Адреса або район',
+      start_when: 'Коли почати', contact: 'Зв’язок', description: 'Опис робіт',
+      add_photo: 'Додати фото', photo_docs: 'Фото, документи або приклади робіт',
+      next_title: 'Що буде далі?',
+      next_1: 'Компанії побачать вашу заявку.',
+      next_2: 'Ви отримаєте ціни та строки виконання.',
+      next_3: 'Зможете перейти в чат і оформити угоду.',
+      next_4: 'Оплата проходитиме безпечно через Kalaba.',
+      get_offers: 'Отримати пропозиції',
+      search_services: 'Пошук послуг',
+      search_intro: 'Виберіть категорію, місто та знайдіть перевірені компанії поруч.',
+      find: 'Знайти', all_companies: 'Усі компанії', results: 'Результати',
+      sort: 'Сортування', by_rating: 'За рейтингом', by_price: 'За ціною', quick_reply: 'Швидка відповідь', today: 'Працюють сьогодні',
+      open: 'Відкрити', company_chat: 'Чат',
+      chat_title: 'Чат за заявкою',
+      chat_intro: 'Обговоріть деталі, отримайте пропозицію та перейдіть до безпечної угоди.',
+      online: 'онлайн · зазвичай відповідає за 15 хвилин',
+      offer_card: 'Пропозиція за заявкою',
+      offer_text: 'Ремонт і сантехніка в Мадриді. Строк: 3 дні. Попередня ціна: 480 €.',
+      compare: 'Порівняти', accept: 'Прийняти', message_placeholder: 'Повідомлення...',
+      estimate: 'Кошторис', date: 'Дата', price: 'Ціна',
+      company_verified: 'Перевірена компанія', response_15: 'Відповідь за 15 хвилин',
+      make_request: 'Створити заявку', write: 'Написати', services: 'Послуги',
+      about_company: 'Про компанію', reviews: 'Відгуки', order: 'Замовити',
+      menu_home: 'Головна', menu_search: 'Пошук послуг', menu_catalog: 'Каталог компаній',
+      menu_request: 'Створити заявку', menu_offers: 'Пропозиції', menu_chat: 'Чат',
+      menu_deal: 'Угода', menu_payment: 'Оплата', menu_map: 'Карта Іспанії'
+    },
+    es: {
+      app_subtitle: 'Marketplace de servicios en España',
+      home: 'Inicio', search: 'Buscar', request: 'Solicitud', chat: 'Chat', account: 'Cuenta',
+      create_request: 'Crear solicitud',
+      request_intro: 'Describe la tarea, elige ciudad y presupuesto. Las empresas te enviarán ofertas.',
+      step_service: 'Servicio', step_details: 'Detalles', step_offers: 'Ofertas',
+      what_needed: '¿Qué necesitas hacer?',
+      category: 'Categoría', city: 'Ciudad', budget: 'Presupuesto', address: 'Dirección o zona',
+      start_when: 'Cuándo empezar', contact: 'Contacto', description: 'Descripción del trabajo',
+      add_photo: 'Añadir foto', photo_docs: 'Fotos, documentos o ejemplos',
+      next_title: '¿Qué pasará después?',
+      next_1: 'Las empresas verán tu solicitud.',
+      next_2: 'Recibirás precios y plazos.',
+      next_3: 'Podrás pasar al chat y cerrar el trato.',
+      next_4: 'El pago será seguro a través de Kalaba.',
+      get_offers: 'Recibir ofertas',
+      search_services: 'Buscar servicios',
+      search_intro: 'Elige categoría, ciudad y encuentra empresas verificadas cerca de ti.',
+      find: 'Buscar', all_companies: 'Todas las empresas', results: 'Resultados',
+      sort: 'Ordenar', by_rating: 'Por valoración', by_price: 'Por precio', quick_reply: 'Respuesta rápida', today: 'Abiertas hoy',
+      open: 'Abrir', company_chat: 'Chat',
+      chat_title: 'Chat de la solicitud',
+      chat_intro: 'Habla los detalles, recibe una oferta y pasa a un trato seguro.',
+      online: 'en línea · suele responder en 15 minutos',
+      offer_card: 'Oferta de la solicitud',
+      offer_text: 'Reformas y fontanería en Madrid. Plazo: 3 días. Precio estimado: 480 €.',
+      compare: 'Comparar', accept: 'Aceptar', message_placeholder: 'Mensaje...',
+      estimate: 'Presupuesto', date: 'Fecha', price: 'Precio',
+      company_verified: 'Empresa verificada', response_15: 'Respuesta en 15 min',
+      make_request: 'Crear solicitud', write: 'Escribir', services: 'Servicios',
+      about_company: 'Sobre la empresa', reviews: 'Reseñas', order: 'Pedir',
+      menu_home: 'Inicio', menu_search: 'Buscar servicios', menu_catalog: 'Catálogo',
+      menu_request: 'Crear solicitud', menu_offers: 'Ofertas', menu_chat: 'Chat',
+      menu_deal: 'Trato', menu_payment: 'Pago', menu_map: 'Mapa de España'
+    },
+    en: {
+      app_subtitle: 'Services marketplace in Spain',
+      home: 'Home', search: 'Search', request: 'Request', chat: 'Chat', account: 'Account',
+      create_request: 'Create request',
+      request_intro: 'Describe the task, choose a city and budget. Companies will send you offers.',
+      step_service: 'Service', step_details: 'Details', step_offers: 'Offers',
+      what_needed: 'What do you need?',
+      category: 'Category', city: 'City', budget: 'Budget', address: 'Address or area',
+      start_when: 'When to start', contact: 'Contact', description: 'Work description',
+      add_photo: 'Add photo', photo_docs: 'Photos, documents or examples',
+      next_title: 'What happens next?',
+      next_1: 'Companies will see your request.',
+      next_2: 'You will receive prices and timelines.',
+      next_3: 'You can move to chat and create a deal.',
+      next_4: 'Payment will be secure through Kalaba.',
+      get_offers: 'Get offers',
+      search_services: 'Search services',
+      search_intro: 'Choose category, city and find verified companies near you.',
+      find: 'Search', all_companies: 'All companies', results: 'Results',
+      sort: 'Sort', by_rating: 'By rating', by_price: 'By price', quick_reply: 'Fast reply', today: 'Open today',
+      open: 'Open', company_chat: 'Chat',
+      chat_title: 'Request chat',
+      chat_intro: 'Discuss details, receive an offer and move to a secure deal.',
+      online: 'online · usually replies in 15 minutes',
+      offer_card: 'Request offer',
+      offer_text: 'Renovation and plumbing in Madrid. Time: 3 days. Estimated price: €480.',
+      compare: 'Compare', accept: 'Accept', message_placeholder: 'Message...',
+      estimate: 'Estimate', date: 'Date', price: 'Price',
+      company_verified: 'Verified company', response_15: 'Reply in 15 min',
+      make_request: 'Create request', write: 'Message', services: 'Services',
+      about_company: 'About company', reviews: 'Reviews', order: 'Order',
+      menu_home: 'Home', menu_search: 'Search services', menu_catalog: 'Catalog',
+      menu_request: 'Create request', menu_offers: 'Offers', menu_chat: 'Chat',
+      menu_deal: 'Deal', menu_payment: 'Payment', menu_map: 'Spain map'
+    }
+  };
+
+  function getLang(){
+    return localStorage.getItem('kalaba_lang') || document.documentElement.lang || 'ru';
+  }
+
+  function setLang(lang){
+    if(!dict[lang]) lang = 'ru';
+    localStorage.setItem('kalaba_lang', lang);
+    document.documentElement.lang = lang;
+    applyLang();
+  }
+
+  function applyLang(){
+    const lang = getLang();
+    const d = dict[lang] || dict.ru;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(d[key]) el.textContent = d[key];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if(d[key]) el.setAttribute('placeholder', d[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-value]').forEach(el => {
+      const key = el.getAttribute('data-i18n-value');
+      if(d[key]) el.value = d[key];
+    });
+
+    document.querySelectorAll('.lang, [data-lang]').forEach(btn => {
+      const l = btn.dataset.lang || btn.getAttribute('data-lang');
+      btn.classList.toggle('active', l === lang);
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.lang, [data-lang]');
+    if(btn){
+      const lang = btn.dataset.lang || btn.getAttribute('data-lang');
+      if(lang && dict[lang]) {
+        e.preventDefault();
+        setLang(lang);
+      }
+    }
+  }, true);
+
+  window.KalabaI18n = { setLang, applyLang, dict };
+  applyLang();
+})();
+
 </script>
 </body>
 </html>
