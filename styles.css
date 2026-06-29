@@ -1887,3 +1887,50 @@ a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, 
     border-style: dashed;
   }
 }
+
+
+/* === CATEGORIES CITIES POSTCODE UPDATE === */
+@media (max-width: 980px) {
+  .manual-field {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .manual-field.active {
+    display: block;
+  }
+
+  .manual-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 7px;
+    color: var(--text);
+  }
+
+  .manual-field input {
+    width: 100% !important;
+    box-sizing: border-box;
+    min-height: 52px;
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    padding: 14px;
+    background: #fff;
+    font-size: 16px !important;
+    outline: none;
+  }
+
+  .hero-search .manual-field {
+    grid-column: 1 / -1;
+  }
+
+  .hero-search .postcode-field {
+    display: block;
+  }
+
+  .request-chip-row button[data-category="Другое"],
+  .quick-filters button[data-category="Другое"],
+  .chips a[data-category="Другое"] {
+    border-style: dashed !important;
+  }
+}

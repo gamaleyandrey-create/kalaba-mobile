@@ -756,5 +756,143 @@
 })();
 
 </script>
+<script id="CATEGORY_CITY_POSTCODE_SCRIPT">
+
+(function(){
+  const citiesByPostcode = {
+    '28': 'Мадрид',
+    '08': 'Барселона',
+    '46': 'Валенсия',
+    '41': 'Севилья',
+    '29': 'Малага',
+    '03': 'Аликанте',
+    '30': 'Мурсия',
+    '50': 'Сарагоса',
+    '48': 'Бильбао',
+    '07': 'Пальма-де-Майорка',
+    '35': 'Лас-Пальмас',
+    '18': 'Гранада',
+    '14': 'Кордова',
+    '36': 'Виго',
+    '47': 'Вальядолид',
+    '33': 'Овьедо',
+    '20': 'Сан-Себастьян',
+    '31': 'Памплона',
+    '11': 'Кадис',
+    '43': 'Таррагона',
+    '37': 'Саламанка',
+    '45': 'Толедо',
+    '17': 'Жирона',
+    '24': 'Леон',
+    '09': 'Бургос',
+    '04': 'Альмерия',
+    '12': 'Кастельон',
+    '38': 'Санта-Крус-де-Тенерифе'
+  };
+
+  function isOtherCategory(value){
+    return /другое|інше|otro|other/i.test(value || '');
+  }
+
+  function isOtherCity(value){
+    return /другой город|інше місто|otra ciudad|other city/i.test(value || '');
+  }
+
+  function toggleManual(select, fieldSelector, testFn){
+    const field = document.querySelector(fieldSelector);
+    if(!field || !select) return;
+    const active = testFn(select.value || select.textContent);
+    field.classList.toggle('active', active);
+    const input = field.querySelector('input');
+    if(input) input.required = active;
+  }
+
+  function currentCategory(){
+    const select = document.querySelector('#category, #searchCategory, .hero-search select');
+    const manual = document.querySelector('#manualService, #otherService');
+    if(select && isOtherCategory(select.value) && manual && manual.value.trim()) return manual.value.trim();
+    return select ? select.value : '';
+  }
+
+  function currentCity(){
+    const select = document.querySelector('#city, #searchCity, #heroCitySelect');
+    const manual = document.querySelector('#manualCity');
+    if(select && isOtherCity(select.value) && manual && manual.value.trim()) return manual.value.trim();
+    if(select) return select.value;
+    const input = document.querySelector('.hero-search input[name="city"], .hero-search input');
+    return input ? input.value : '';
+  }
+
+  function currentPostcode(){
+    const pc = document.querySelector('#postcode, #searchPostcode, #heroPostcode');
+    return pc ? pc.value.trim() : '';
+  }
+
+  function updateCityFromPostcode(pcInput){
+    if(!pcInput) return;
+    const prefix = pcInput.value.trim().slice(0,2);
+    const city = citiesByPostcode[prefix];
+    const select = document.querySelector('#city, #searchCity, #heroCitySelect');
+    if(city && select){
+      select.value = city;
+      select.dispatchEvent(new Event('change'));
+    }
+  }
+
+  function setup(){
+    const catSelects = document.querySelectorAll('#category, #searchCategory, .hero-search select');
+    catSelects.forEach(sel => {
+      sel.addEventListener('change', () => toggleManual(sel, '.manual-service-field, .other-service-field', isOtherCategory));
+      toggleManual(sel, '.manual-service-field, .other-service-field', isOtherCategory);
+    });
+
+    const citySelects = document.querySelectorAll('#city, #searchCity, #heroCitySelect');
+    citySelects.forEach(sel => {
+      sel.addEventListener('change', () => toggleManual(sel, '.manual-city-field', isOtherCity));
+      toggleManual(sel, '.manual-city-field', isOtherCity);
+    });
+
+    document.querySelectorAll('#postcode, #searchPostcode, #heroPostcode').forEach(pc => {
+      pc.addEventListener('input', () => updateCityFromPostcode(pc));
+    });
+
+    document.querySelectorAll('.request-chip-row button, .quick-filters button, .chips a').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        const category = btn.dataset.category || btn.textContent;
+        const sel = document.querySelector('#category, #searchCategory, .hero-search select');
+        if(sel){
+          sel.value = category;
+          sel.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+
+    document.querySelectorAll('#submitRequest, #applySearch, .hero-search a, .hero-search button').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        const isHero = btn.closest('.hero-search');
+        if(isHero || btn.id === 'applySearch'){
+          e.preventDefault();
+          const params = new URLSearchParams();
+          if(currentCategory()) params.set('category', currentCategory());
+          if(currentCity()) params.set('city', currentCity());
+          if(currentPostcode()) params.set('postcode', currentPostcode());
+          window.location.href = 'search.html' + (params.toString() ? '?' + params.toString() : '');
+        } else if(btn.id === 'submitRequest') {
+          e.preventDefault();
+          const params = new URLSearchParams();
+          if(currentCategory()) params.set('category', currentCategory());
+          if(currentCity()) params.set('city', currentCity());
+          if(currentPostcode()) params.set('postcode', currentPostcode());
+          window.location.href = 'offers.html' + (params.toString() ? '?' + params.toString() : '');
+        }
+      }, true);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setup);
+  setup();
+})();
+
+</script>
 </body>
 </html>
