@@ -660,3 +660,15 @@ button:active,
 a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, .price-grid article, .kanban div, .kanban article, .review-grid article {
   cursor: pointer;
 }
+
+/* === FINAL NAVIGATION FIX === */
+a, button, .company-card, .category-grid article, .metrics div, .offer, .quote, .price-grid article, .kanban div, .kanban article, .review-grid article, .map-preview, .country {
+  cursor: pointer;
+}
+.chips a.active,
+.category-grid article.active,
+.category-grid a.active {
+  border-color: var(--blue) !important;
+  color: var(--blue) !important;
+  background: var(--soft) !important;
+}

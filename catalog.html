@@ -69,97 +69,124 @@
 <small>📍 Бильбао</small><small>Gran Vía, 24, 48001 Bilbao</small>
 <div class="card-actions"><a href="company.html" data-ru="Открыть" data-uk="Відкрити" data-es="Abrir" data-en="Open">Открыть</a><a class="secondary" href="request.html" data-ru="Заявка" data-uk="Заявка" data-es="Solicitud" data-en="Request">Заявка</a></div>
 </div></article></div></div></section>
-</main> <nav class="mobile-nav"> <a href="index.html"><span>🏠</span>Главная</a> <a href="search.html"><span>🔎</span>Поиск</a> <a href="request.html"><span>📝</span>Заявка</a> <a href="chat.html"><span>💬</span>Чат</a> <a href="customer.html"><span>👤</span>Кабинет</a>
-</nav> <script src="app.js"></script>
-<script id="MOBILE_HERO_ACTIVE_SCRIPT"> (function(){ function go(url){ if(url) window.location.href = url; } document.querySelectorAll('.country').forEach(function(el){ el.addEventListener('click', function(){ go('map.html'); }); }); document.querySelectorAll('.hero-search select').forEach(function(select){ select.addEventListener('change', function(){ if(select.value) go('catalog.html?category=' + encodeURIComponent(select.value)); }); select.addEventListener('click', function(e){ e.stopPropagation(); }); }); document.querySelectorAll('.hero-search input').forEach(function(input){ input.addEventListener('focus', function(){ input.dataset.active = '1'; }); input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ go('search.html?city=' + encodeURIComponent(input.value || '')); } }); }); document.querySelectorAll('.hero-visual').forEach(function(hero){ hero.addEventListener('click', function(e){ if(e.target.closest('a,button,input,select,.chips,.country')) return; go('search.html'); }); }); document.querySelectorAll('.mobile-brand-logo, .mobile-brand-title').forEach(function(el){ el.addEventListener('click', function(){ go('index.html'); }); });
-})(); </script>
+</main> 
+<nav class="mobile-nav">
+  <a href="index.html"><span>🏠</span>Главная</a>
+  <a href="search.html"><span>🔎</span>Поиск</a>
+  <a href="request.html"><span>📝</span>Заявка</a>
+  <a href="chat.html"><span>💬</span>Чат</a>
+  <a href="customer.html"><span>👤</span>Кабинет</a>
+</nav>
+ <script src="app.js"></script>
 <script id="MOBILE_APP_MENU_SCRIPT"> (function(){ var menuButton = document.querySelector('.mobile-menu-button'); var closeButton = document.querySelector('.mobile-menu-close'); var backdrop = document.querySelector('.mobile-menu-backdrop'); if(menuButton){ menuButton.addEventListener('click', function(e){ e.preventDefault(); document.body.classList.add('mobile-menu-open'); }); } if(closeButton){ closeButton.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); } if(backdrop){ backdrop.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); } document.querySelectorAll('.mobile-menu-panel a').forEach(function(a){ a.addEventListener('click', function(){ document.body.classList.remove('mobile-menu-open'); }); });
 })(); </script>
-<script id="CLEAN_LINKS_ROUTING_SCRIPT">
+<script id="FINAL_NAVIGATION_SCRIPT">
 
 (function(){
-  const pages = {
-    home:'index.html', search:'search.html', catalog:'catalog.html', company:'company.html',
-    request:'request.html', offers:'offers.html', compare:'compare.html', chat:'chat.html',
-    deal:'deal.html', payment:'payment.html', reviews:'reviews.html', map:'map.html',
-    customer:'customer.html', business:'business.html', admin:'admin.html', help:'help.html'
-  };
-
-  const categoryMap = {
-    'ремонт':'Ремонт и отделка',
-    'отделка':'Ремонт и отделка',
-    'сантех':'Сантехника',
-    'переезд':'Переезды',
-    'электр':'Электрика',
-    'клининг':'Клининг',
-    'уборк':'Клининг',
-    'сад':'Сад и ландшафт',
-    'ландшафт':'Сад и ландшафт'
-  };
-
-  function cleanText(raw){
-    return (raw || '').replace(/[^\p{L}\p{N}\s]/gu,' ').replace(/\s+/g,' ').trim();
-  }
-
-  function categoryFrom(raw){
-    const s = cleanText(raw).toLowerCase();
-    for (const key in categoryMap) if (s.includes(key)) return categoryMap[key];
-    return cleanText(raw);
-  }
-
   function go(url){ if(url) window.location.href = url; }
 
-  function currentCity(){
-    const city = document.querySelector('.hero-search input');
-    const top = document.querySelector('.top-search input');
-    return (city && city.value) || (top && top.value) || '';
+  function clean(raw){
+    return (raw || '')
+      .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function lower(raw){ return clean(raw).toLowerCase(); }
+
+  function categoryFrom(raw){
+    const s = lower(raw);
+    if(s.includes('сантех') || s.includes('fontan')) return 'Сантехника';
+    if(s.includes('ремонт') || s.includes('отдел') || s.includes('reformas')) return 'Ремонт и отделка';
+    if(s.includes('переезд') || s.includes('mudanzas')) return 'Переезды';
+    if(s.includes('электр') || s.includes('electric')) return 'Электрика';
+    if(s.includes('клининг') || s.includes('уборк') || s.includes('limpieza')) return 'Клининг';
+    if(s.includes('сад') || s.includes('ландшафт') || s.includes('jard')) return 'Сад и ландшафт';
+    return clean(raw);
+  }
+
+  function cityValue(){
+    const heroCity = document.querySelector('.hero-search input');
+    const topSearch = document.querySelector('.top-search input');
+    return (heroCity && heroCity.value) || (topSearch && topSearch.value) || '';
   }
 
   function selectedCategory(){
-    const sel = document.querySelector('.hero-search select');
-    if(sel && sel.value && !/выберите|оберіть|elige|choose/i.test(sel.value)) return categoryFrom(sel.value);
+    const select = document.querySelector('.hero-search select');
+    if(select && select.value && !/выберите|оберіть|elige|choose/i.test(select.value)){
+      return categoryFrom(select.value);
+    }
     const active = document.querySelector('.chips a.active, .category-grid article.active, .category-grid a.active');
     if(active) return categoryFrom(active.textContent);
     return '';
   }
 
-  function goCategory(cat){
+  function catalogUrl(category, city){
     const params = new URLSearchParams();
-    if(cat) params.set('category', cat);
-    const city = currentCity();
+    if(category) params.set('category', category);
     if(city) params.set('city', city);
-    go('catalog.html' + (params.toString() ? '?' + params.toString() : ''));
+    return 'catalog.html' + (params.toString() ? '?' + params.toString() : '');
   }
 
-  // Fix empty and hash links by text
+  function routeByText(text){
+    const t = lower(text);
+
+    if(t.includes('глав') || t.includes('home') || t.includes('inicio')) return 'index.html';
+    if(t.includes('поиск') || t.includes('найти') || t.includes('search') || t.includes('buscar')) return 'search.html';
+    if(t.includes('каталог') || t.includes('компан') || t.includes('catalog')) return 'catalog.html';
+    if(t.includes('подробнее') || t.includes('открыть') || t.includes('details') || t.includes('más')) return 'company.html';
+    if(t.includes('заяв') || t.includes('request') || t.includes('solicitud')) return 'request.html';
+    if(t.includes('предлож') || t.includes('offer') || t.includes('oferta')) return 'offers.html';
+    if(t.includes('сравн') || t.includes('compare') || t.includes('comparar')) return 'compare.html';
+    if(t.includes('чат') || t.includes('chat')) return 'chat.html';
+    if(t.includes('сдел') || t.includes('deal') || t.includes('negocio')) return 'deal.html';
+    if(t.includes('оплат') || t.includes('payment') || t.includes('pago')) return 'payment.html';
+    if(t.includes('отзыв') || t.includes('review') || t.includes('reseña')) return 'reviews.html';
+    if(t.includes('карта') || t.includes('map') || t.includes('mapa') || t.includes('испания')) return 'map.html';
+    if(t.includes('клиент') || t.includes('кабинет') || t.includes('account') || t.includes('cuenta')) return 'customer.html';
+    if(t.includes('бизнес') || t.includes('компания') || t.includes('business') || t.includes('empresa')) return 'business.html';
+    if(t.includes('админ') || t.includes('admin')) return 'admin.html';
+    if(t.includes('помощ') || t.includes('help') || t.includes('ayuda')) return 'help.html';
+
+    return '';
+  }
+
+  function safeLink(url){
+    return url && url !== '#' && !url.startsWith('javascript:');
+  }
+
+  // Normalize all empty/hash links
   document.querySelectorAll('a').forEach(function(a){
     const href = a.getAttribute('href');
-    const t = cleanText(a.textContent).toLowerCase();
-    if(!href || href === '#'){
-      let target = 'index.html';
-      if(t.includes('поиск') || t.includes('найти') || t.includes('buscar') || t.includes('search')) target='search.html';
-      if(t.includes('каталог') || t.includes('компан')) target='catalog.html';
-      if(t.includes('подробнее') || t.includes('открыть') || t.includes('details')) target='company.html';
-      if(t.includes('заяв') || t.includes('solicitud') || t.includes('request')) target='request.html';
-      if(t.includes('предлож') || t.includes('oferta') || t.includes('offer')) target='offers.html';
-      if(t.includes('чат') || t.includes('chat')) target='chat.html';
-      if(t.includes('сдел') || t.includes('deal') || t.includes('negocio')) target='deal.html';
-      if(t.includes('оплат') || t.includes('pago') || t.includes('payment')) target='payment.html';
-      if(t.includes('отзыв') || t.includes('reseña') || t.includes('review')) target='reviews.html';
-      if(t.includes('карта') || t.includes('mapa') || t.includes('map')) target='map.html';
-      if(t.includes('клиент') || t.includes('кабинет') || t.includes('cuenta') || t.includes('account')) target='customer.html';
-      if(t.includes('компания') || t.includes('empresa') || t.includes('business')) target='business.html';
-      if(t.includes('админ') || t.includes('admin')) target='admin.html';
-      a.setAttribute('href', target);
+    if(!safeLink(href)){
+      const category = categoryFrom(a.textContent);
+      const knownCategory = /сантех|ремонт|отдел|переезд|электр|клининг|сад|ландшафт/i.test(a.textContent);
+      a.setAttribute('href', knownCategory ? catalogUrl(category, '') : (routeByText(a.textContent) || 'index.html'));
     }
   });
 
-  // Search button must use selected category
+  // Header / logo
+  document.querySelectorAll('.brand, .mobile-brand-left, .mobile-brand-logo, .mobile-brand-title').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      go('index.html');
+    }, true);
+  });
+
+  // Mobile header actions
+  document.querySelectorAll('.mobile-brand-actions a, .mobile-brand-actions button').forEach(function(el){
+    const label = lower(el.textContent + ' ' + (el.getAttribute('aria-label') || ''));
+    if(label.includes('поиск') || label.includes('⌕')) el.onclick = function(e){ e.preventDefault(); go('search.html'); };
+    else if(label.includes('карта') || label.includes('🗺')) el.onclick = function(e){ e.preventDefault(); go('map.html'); };
+    else if(label.includes('кабинет') || label.includes('👤')) el.onclick = function(e){ e.preventDefault(); go('customer.html'); };
+  });
+
+  // Main search
   document.querySelectorAll('.hero-search a, .hero-search button').forEach(function(btn){
     btn.addEventListener('click', function(e){
       e.preventDefault();
       e.stopImmediatePropagation();
-      goCategory(selectedCategory());
+      go(catalogUrl(selectedCategory(), cityValue()));
     }, true);
   });
 
@@ -167,23 +194,33 @@
     input.addEventListener('keydown', function(e){
       if(e.key === 'Enter'){
         e.preventDefault();
-        const params = new URLSearchParams();
-        const cat = selectedCategory();
-        if(cat) params.set('category', cat);
-        if(input.value) params.set('city', input.value);
-        go('catalog.html' + (params.toString() ? '?' + params.toString() : ''));
+        go(catalogUrl(selectedCategory(), input.value || cityValue()));
       }
     }, true);
   });
 
+  // Category chips/cards
   document.querySelectorAll('.chips a, .category-grid article, .category-grid a').forEach(function(el){
     el.addEventListener('click', function(e){
       e.preventDefault();
       e.stopImmediatePropagation();
-      goCategory(categoryFrom(el.textContent));
+      go(catalogUrl(categoryFrom(el.textContent), cityValue()));
     }, true);
   });
 
+  // Generic buttons without links
+  document.querySelectorAll('button').forEach(function(btn){
+    if(btn.classList.contains('mobile-menu-button') || btn.classList.contains('mobile-menu-close')) return;
+    btn.addEventListener('click', function(e){
+      const url = routeByText(btn.textContent);
+      if(url){
+        e.preventDefault();
+        go(url);
+      }
+    });
+  });
+
+  // Company cards and actions
   document.querySelectorAll('.company-card').forEach(function(card){
     card.addEventListener('click', function(e){
       if(e.target.closest('a,button,input,select')) return;
@@ -191,6 +228,33 @@
     });
   });
 
+  document.querySelectorAll('.card-actions a, .offer-actions a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      const url = routeByText(a.textContent);
+      if(url){
+        e.preventDefault();
+        go(url);
+      }
+    }, true);
+  });
+
+  // Hero area: only background click, not fields
+  document.querySelectorAll('.hero-visual, .hero-pro').forEach(function(hero){
+    hero.addEventListener('click', function(e){
+      if(e.target.closest('a,button,input,select,.chips,.country')) return;
+      go('search.html');
+    });
+  });
+
+  // Country/map
+  document.querySelectorAll('.country, .map-preview, .map-large, .map-box, .open-map').forEach(function(el){
+    el.addEventListener('click', function(e){
+      if(e.target.closest('a,button,input,select')) return;
+      go('map.html');
+    });
+  });
+
+  // Metrics
   document.querySelectorAll('.metrics div').forEach(function(el, i){
     el.addEventListener('click', function(){
       if(i === 0) go('catalog.html');
@@ -200,13 +264,7 @@
     });
   });
 
-  document.querySelectorAll('.map-preview, .map-large, .map-box, .open-map, .country').forEach(function(el){
-    el.addEventListener('click', function(e){
-      if(e.target.closest('a,button,input,select')) return;
-      go('map.html');
-    });
-  });
-
+  // Offers, reviews, services, kanban, tables
   document.querySelectorAll('.offer').forEach(function(el){
     el.addEventListener('click', function(e){
       if(e.target.closest('a,button')) return;
@@ -215,7 +273,10 @@
   });
 
   document.querySelectorAll('.quote, .review-grid article').forEach(function(el){
-    el.addEventListener('click', function(){ go('reviews.html'); });
+    el.addEventListener('click', function(e){
+      if(e.target.closest('a,button')) return;
+      go('reviews.html');
+    });
   });
 
   document.querySelectorAll('.price-grid article').forEach(function(el){
@@ -235,17 +296,20 @@
     });
   });
 
-  // Catalog filtering by category
-  const params = new URLSearchParams(window.location.search);
-  const cat = params.get('category');
-  if(cat){
-    const normalized = categoryFrom(cat).toLowerCase();
+  // Catalog filtering by URL category
+  const params = new URLSearchParams(location.search);
+  const category = params.get('category');
+  if(category){
+    const normalized = categoryFrom(category).toLowerCase();
+
     document.querySelectorAll('.page-head h1, .section-title h2').forEach(function(h){
-      if(/каталог|поиск|компан|category/i.test(h.textContent)) h.textContent = 'Категория: ' + categoryFrom(cat);
+      if(/каталог|поиск|компан|category/i.test(h.textContent)){
+        h.textContent = 'Категория: ' + categoryFrom(category);
+      }
     });
 
     document.querySelectorAll('.company-card').forEach(function(card){
-      const t = card.textContent.toLowerCase();
+      const t = lower(card.textContent);
       const show =
         !normalized ||
         t.includes(normalized) ||
@@ -255,7 +319,12 @@
         (normalized.includes('электрика') && (t.includes('электр') || t.includes('electric'))) ||
         (normalized.includes('клининг') && (t.includes('клининг') || t.includes('limpieza'))) ||
         (normalized.includes('сад') && (t.includes('сад') || t.includes('jard')));
+
       card.style.display = show ? '' : 'none';
+    });
+
+    document.querySelectorAll('.chips a, .category-grid article, .category-grid a').forEach(function(el){
+      if(categoryFrom(el.textContent).toLowerCase() === normalized) el.classList.add('active');
     });
   }
 })();
