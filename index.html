@@ -13,7 +13,12 @@
 </aside>
 <main>
 <header class="topbar"> <div class="top-search"><span>⌕</span><input data-placeholder-ru="Поиск услуг, компаний, специалистов..." data-placeholder-uk="Пошук послуг, компаній, спеціалістів..." data-placeholder-es="Buscar servicios, empresas, especialistas..." data-placeholder-en="Search services, companies, specialists..." placeholder="Поиск услуг, компаний, специалистов..."/></div> <div class="top-actions"> <button class="lang active" data-lang="ru">Русский</button> <button class="lang" data-lang="uk">Українська</button> <button class="lang" data-lang="es">Español</button> <button class="lang" data-lang="en">English</button> <button class="theme" id="themeToggle">☾</button> <button class="bell">🔔<small>3</small></button> </div>
-</header> <section class="hero-pro"> <div class="hero-visual"> <span class="country">🇪🇸 <span data-ru="Испания" data-uk="Іспанія" data-es="España" data-en="Spain">Испания</span></span> <h1 data-ru="Найдите проверенные услуги по всей Испании" data-uk="Знайдіть перевірені послуги по всій Іспанії" data-es="Encuentra servicios confiables en toda España" data-en="Find trusted services across Spain">Найдите проверенные услуги по всей Испании</h1> <p data-ru="Реальные компании, проверенные отзывы и безопасные сделки в Мадриде, Барселоне, Валенсии, Севилье и других городах." data-uk="Реальні компанії, перевірені відгуки та безпечні угоди в Мадриді, Барселоні, Валенсії, Севільї та інших містах." data-es="Empresas reales, reseñas verificadas y negocios seguros en Madrid, Barcelona, Valencia, Sevilla y otras ciudades." data-en="Real companies, verified reviews and secure deals in Madrid, Barcelona, Valencia, Seville and other cities.">Реальные компании, проверенные отзывы и безопасные сделки в Мадриде, Барселоне, Валенсии, Севилье и других городах.</p> <div class="hero-search"><select><option value="Ремонт и отделка">🛠 Ремонт и отделка</option>
+</header> <section class="hero-pro"> <div class="hero-visual"> <span class="country">🇪🇸 <span data-ru="Испания" data-uk="Іспанія" data-es="España" data-en="Spain">Испания</span></span> <h1 data-ru="Найдите проверенные услуги по всей Испании" data-uk="Знайдіть перевірені послуги по всій Іспанії" data-es="Encuentra servicios confiables en toda España" data-en="Find trusted services across Spain">Найдите проверенные услуги по всей Испании</h1> <p data-ru="Реальные компании, проверенные отзывы и безопасные сделки в Мадриде, Барселоне, Валенсии, Севилье и других городах." data-uk="Реальні компанії, перевірені відгуки та безпечні угоди в Мадриді, Барселоні, Валенсії, Севільї та інших містах." data-es="Empresas reales, reseñas verificadas y negocios seguros en Madrid, Barcelona, Valencia, Sevilla y otras ciudades." data-en="Real companies, verified reviews and secure deals in Madrid, Barcelona, Valencia, Seville and other cities.">Реальные компании, проверенные отзывы и безопасные сделки в Мадриде, Барселоне, Валенсии, Севилье и других городах.</p> 
+<div class="hero-search kalaba-clean-hero">
+  <div class="hero-field">
+    <label for="heroCategory">Категория</label>
+    <select id="heroCategory">
+      <option value="Ремонт и отделка">🛠 Ремонт и отделка</option>
 <option value="Сантехника">🚿 Сантехника</option>
 <option value="Электрика">⚡ Электрика</option>
 <option value="Строительство">🏠 Строительство</option>
@@ -37,7 +42,14 @@
 <option value="Бухгалтерия">💼 Бухгалтерия</option>
 <option value="Маркетинг">📢 Маркетинг</option>
 <option value="Доставка">📦 Доставка</option>
-<option value="Другое">➕ Другое</option></select><div class="manual-field manual-service-field"><label>Опишите услугу *</label><input id="manualService" placeholder="Например: монтаж стеклянного навеса"></div><select id="heroCitySelect"><option value="Мадрид">Мадрид</option>
+<option value="Другое">➕ Другое</option>
+    </select>
+  </div>
+
+  <div class="hero-field">
+    <label for="heroCity">Город</label>
+    <select id="heroCity">
+      <option value="Мадрид">Мадрид</option>
 <option value="Барселона">Барселона</option>
 <option value="Валенсия">Валенсия</option>
 <option value="Севилья">Севилья</option>
@@ -66,13 +78,38 @@
 <option value="Альмерия">Альмерия</option>
 <option value="Кастельон">Кастельон</option>
 <option value="Санта-Крус-де-Тенерифе">Санта-Крус-де-Тенерифе</option>
-<option value="Другой город">Другой город</option></select><div class="manual-field manual-city-field"><label>Название города *</label><input id="manualCity" placeholder="Например: Benidorm, Sitges"></div><input id="heroPostcode" class="postcode-field" inputmode="numeric" maxlength="5" placeholder="Почтовый индекс, например 28013"><a class="btn" href="search.html" data-ru="Найти" data-uk="Знайти" data-es="Buscar" data-en="Search">Найти</a></div> <div class="chips"><a href="search.html?category=Ремонт и отделка" data-category="Ремонт и отделка">🛠 Ремонт</a>
+<option value="Другой город">Другой город</option>
+    </select>
+  </div>
+
+  <a class="hero-submit" href="search.html">Найти</a>
+
+  <div class="hero-extra-fields">
+    <div class="hero-field hero-other-service">
+      <label for="heroManualService">Опишите услугу *</label>
+      <input id="heroManualService" placeholder="Например: монтаж стеклянного навеса">
+    </div>
+
+    <div class="hero-field hero-other-city">
+      <label for="heroManualCity">Название города *</label>
+      <input id="heroManualCity" placeholder="Например: Benidorm, Sitges">
+    </div>
+
+    <div class="hero-field hero-postcode active">
+      <label for="heroPostcode">Почтовый индекс</label>
+      <input id="heroPostcode" inputmode="numeric" maxlength="5" placeholder="Например: 28013">
+    </div>
+  </div>
+</div>
+<div class="chips">
+<a href="search.html?category=Ремонт и отделка" data-category="Ремонт и отделка">🛠 Ремонт</a>
 <a href="search.html?category=Сантехника" data-category="Сантехника">🚿 Сантехника</a>
 <a href="search.html?category=Электрика" data-category="Электрика">⚡ Электрика</a>
 <a href="search.html?category=Переезды" data-category="Переезды">🚚 Переезды</a>
 <a href="search.html?category=Клининг" data-category="Клининг">🧹 Клининг</a>
 <a href="search.html?category=Сад и ландшафт" data-category="Сад и ландшафт">🌿 Сад</a>
-<a href="search.html?category=Другое" data-category="Другое">➕ Другое</a></div> </div> <aside class="map-preview"><h3 data-ru="Карта Испании" data-uk="Карта Іспанії" data-es="Mapa de España" data-en="Map of Spain">Карта Испании</h3><img src="map-spain.svg" alt="Spain map"><a href="map.html" data-ru="Открыть карту" data-uk="Відкрити карту" data-es="Abrir mapa" data-en="Open map">Открыть карту</a></aside>
+<a href="search.html?category=Другое" data-category="Другое">➕ Другое</a>
+</div> </div> <aside class="map-preview"><h3 data-ru="Карта Испании" data-uk="Карта Іспанії" data-es="Mapa de España" data-en="Map of Spain">Карта Испании</h3><img src="map-spain.svg" alt="Spain map"><a href="map.html" data-ru="Открыть карту" data-uk="Відкрити карту" data-es="Abrir mapa" data-en="Open map">Открыть карту</a></aside>
 </section>
 <section class="metrics">
 <div><i>🏢</i><strong>18 420+</strong><span data-ru="Проверенных компаний" data-uk="Перевірених компаній" data-es="Empresas verificadas" data-en="Verified companies">Проверенных компаний</span></div>
@@ -597,421 +634,110 @@
 })();
 
 </script>
-<script id="HOME_FIELDS_FIX_SCRIPT">
+<script id="HERO_CLEAN_FIELDS_SCRIPT">
 
 (function(){
-  const translations = {
-    ru: {
-      category_label: 'Категория',
-      city_label: 'Город',
-      category_placeholder: 'Выберите категорию',
-      city_placeholder: 'Укажите город: Мадрид, Барселона...',
-      find: 'Найти'
-    },
-    uk: {
-      category_label: 'Категорія',
-      city_label: 'Місто',
-      category_placeholder: 'Оберіть категорію',
-      city_placeholder: 'Вкажіть місто: Мадрид, Барселона...',
-      find: 'Знайти'
-    },
-    es: {
-      category_label: 'Categoría',
-      city_label: 'Ciudad',
-      category_placeholder: 'Elige categoría',
-      city_placeholder: 'Indica ciudad: Madrid, Barcelona...',
-      find: 'Buscar'
-    },
-    en: {
-      category_label: 'Category',
-      city_label: 'City',
-      category_placeholder: 'Choose category',
-      city_placeholder: 'Enter city: Madrid, Barcelona...',
-      find: 'Search'
-    }
-  };
-
-  function lang(){
-    return localStorage.getItem('kalaba_lang') || document.documentElement.lang || 'ru';
-  }
-
-  function fixHeroFields(){
-    const hero = document.querySelector('.hero-search');
-    if(!hero) return;
-
-    const select = hero.querySelector('select');
-    const input = hero.querySelector('input');
-    const button = hero.querySelector('a, button');
-
-    if(select && !select.closest('.hero-field-wrap')){
-      const wrap = document.createElement('div');
-      wrap.className = 'hero-field-wrap';
-      const label = document.createElement('label');
-      label.className = 'hero-field-label';
-      label.setAttribute('data-home-i18n', 'category_label');
-      label.textContent = 'Категория';
-      select.parentNode.insertBefore(wrap, select);
-      wrap.appendChild(label);
-      wrap.appendChild(select);
-    }
-
-    if(input && !input.closest('.hero-field-wrap')){
-      const wrap = document.createElement('div');
-      wrap.className = 'hero-field-wrap';
-      const label = document.createElement('label');
-      label.className = 'hero-field-label';
-      label.setAttribute('data-home-i18n', 'city_label');
-      label.textContent = 'Город';
-      input.parentNode.insertBefore(wrap, input);
-      wrap.appendChild(label);
-      wrap.appendChild(input);
-    }
-
-    if(button){
-      button.setAttribute('data-home-i18n', 'find');
-      button.addEventListener('click', function(e){
-        e.preventDefault();
-        const params = new URLSearchParams();
-        if(select && select.value && !/выберите|оберіть|elige|choose/i.test(select.value)) params.set('category', select.value);
-        if(input && input.value) params.set('city', input.value);
-        window.location.href = 'search.html' + (params.toString() ? '?' + params.toString() : '');
-      }, true);
-    }
-
-    applyHomeLang();
-  }
-
-  function applyHomeLang(){
-    const l = lang();
-    const d = translations[l] || translations.ru;
-
-    document.querySelectorAll('[data-home-i18n]').forEach(el => {
-      const key = el.getAttribute('data-home-i18n');
-      if(d[key]) el.textContent = d[key];
-    });
-
-    const hero = document.querySelector('.hero-search');
-    if(!hero) return;
-
-    const input = hero.querySelector('input');
-    const select = hero.querySelector('select');
-    const button = hero.querySelector('a, button');
-
-    if(input) input.placeholder = d.city_placeholder;
-    if(button) button.textContent = d.find;
-
-    if(select){
-      const first = select.options[0];
-      if(first && /выберите|оберіть|elige|choose/i.test(first.textContent)){
-        first.textContent = d.category_placeholder;
-      }
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', fixHeroFields);
-  fixHeroFields();
-
-  document.addEventListener('click', function(e){
-    if(e.target.closest('.lang, [data-lang]')){
-      setTimeout(applyHomeLang, 60);
-    }
-  }, true);
-
-  window.addEventListener('storage', applyHomeLang);
-})();
-
-</script>
-<script id="OTHER_CATEGORY_SCRIPT">
-
-(function(){
-  const labels = {
-    ru: {
-      other: 'Другое',
-      other_label: 'Опишите услугу',
-      other_placeholder: 'Например: монтаж стеклянного навеса, настройка техники, нестандартная работа'
-    },
-    uk: {
-      other: 'Інше',
-      other_label: 'Опишіть послугу',
-      other_placeholder: 'Наприклад: монтаж скляного навісу, налаштування техніки, нестандартна робота'
-    },
-    es: {
-      other: 'Otro',
-      other_label: 'Describe el servicio',
-      other_placeholder: 'Por ejemplo: instalación de una marquesina de vidrio, configuración de equipos, trabajo especial'
-    },
-    en: {
-      other: 'Other',
-      other_label: 'Describe the service',
-      other_placeholder: 'For example: glass canopy installation, device setup, custom work'
-    }
-  };
-
-  function lang(){
-    return localStorage.getItem('kalaba_lang') || document.documentElement.lang || 'ru';
-  }
-
-  function isOther(value){
-    return /другое|інше|otro|other/i.test(value || '');
-  }
-
-  function ensureOtherOption(select){
-    if(!select) return;
-    const hasOther = Array.from(select.options).some(o => isOther(o.value || o.textContent));
-    if(!hasOther){
-      const opt = document.createElement('option');
-      opt.value = 'Другое';
-      opt.textContent = labels[lang()].other;
-      select.appendChild(opt);
-    }
-  }
-
-  function ensureOtherField(afterEl, textarea){
-    if(!afterEl) return null;
-    let container = afterEl.parentElement.querySelector('.other-service-field');
-    if(!container){
-      container = document.createElement('div');
-      container.className = 'other-service-field';
-      container.innerHTML = textarea
-        ? '<label data-other-i18n="other_label">Опишите услугу</label><textarea id="otherService" placeholder="Например: монтаж стеклянного навеса, настройка техники, нестандартная работа"></textarea>'
-        : '<label data-other-i18n="other_label">Опишите услугу</label><input id="otherService" placeholder="Например: монтаж стеклянного навеса">';
-      afterEl.parentElement.appendChild(container);
-    }
-    return container;
-  }
-
-  function applyOtherLang(){
-    const l = lang();
-    const d = labels[l] || labels.ru;
-    document.querySelectorAll('[data-other-i18n="other_label"]').forEach(el => el.textContent = d.other_label);
-    document.querySelectorAll('#otherService').forEach(el => el.placeholder = d.other_placeholder);
-    document.querySelectorAll('select option').forEach(opt => {
-      if(isOther(opt.value) || isOther(opt.textContent)){
-        opt.value = 'Другое';
-        opt.textContent = d.other;
-      }
-    });
-    document.querySelectorAll('[data-category="Другое"]').forEach(btn => {
-      const prefix = btn.textContent.match(/^[^\p{L}\p{N}]*/u)?.[0] || '';
-      btn.textContent = (prefix || '➕ ') + d.other;
-    });
-  }
-
-  function setupSelect(select){
-    ensureOtherOption(select);
-    const wrapper = select.closest('.request-field-clean, .hero-field-wrap, .search-filter-grid > div, .request-field, div') || select.parentElement;
-    let field = wrapper.querySelector('.other-service-field');
-    if(!field){
-      field = document.createElement('div');
-      field.className = 'other-service-field';
-      field.innerHTML = '<label data-other-i18n="other_label">Опишите услугу</label><input id="otherService" placeholder="Например: монтаж стеклянного навеса">';
-      wrapper.appendChild(field);
-    }
-
-    function toggle(){
-      field.classList.toggle('active', isOther(select.value));
-      const input = field.querySelector('input, textarea');
-      if(input) input.required = isOther(select.value);
-    }
-
-    select.addEventListener('change', toggle);
-    toggle();
-  }
-
-  function setupChips(){
-    const rows = document.querySelectorAll('.request-chip-row, .quick-filters');
-    rows.forEach(row => {
-      if(!row.querySelector('[data-category="Другое"]')){
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.dataset.category = 'Другое';
-        btn.textContent = '➕ ' + (labels[lang()] || labels.ru).other;
-        row.appendChild(btn);
-      }
-    });
-  }
-
-  function setupForms(){
-    document.querySelectorAll('select').forEach(select => {
-      const text = (select.closest('form, section, main') || document.body).textContent;
-      if(/категор|категорія|categor|category/i.test(text) || select.id === 'category' || select.id === 'searchCategory'){
-        setupSelect(select);
-      }
-    });
-
-    setupChips();
-
-    document.querySelectorAll('.request-chip-row button, .quick-filters button').forEach(btn => {
-      btn.addEventListener('click', function(){
-        const category = btn.dataset.category || btn.textContent;
-        const select = document.querySelector('#category, #searchCategory, .hero-search select');
-        if(select){
-          ensureOtherOption(select);
-          if(isOther(category)) select.value = 'Другое';
-          else select.value = category;
-          select.dispatchEvent(new Event('change'));
-        }
-      });
-    });
-
-    // Submit/search should pass custom category text when "Other" selected
-    document.querySelectorAll('#submitRequest, #applySearch, .hero-search a, .hero-search button').forEach(btn => {
-      btn.addEventListener('click', function(e){
-        const select = document.querySelector('#category, #searchCategory, .hero-search select');
-        const other = document.querySelector('#otherService');
-        if(select && isOther(select.value) && other && other.value.trim()){
-          select.dataset.manualCategory = other.value.trim();
-        }
-      }, true);
-    });
-
-    applyOtherLang();
-  }
-
-  document.addEventListener('DOMContentLoaded', setupForms);
-  setupForms();
-
-  document.addEventListener('click', function(e){
-    if(e.target.closest('.lang, [data-lang]')) setTimeout(applyOtherLang, 60);
-  }, true);
-})();
-
-</script>
-<script id="CATEGORY_CITY_POSTCODE_SCRIPT">
-
-(function(){
-  const citiesByPostcode = {
-    '28': 'Мадрид',
-    '08': 'Барселона',
-    '46': 'Валенсия',
-    '41': 'Севилья',
-    '29': 'Малага',
-    '03': 'Аликанте',
-    '30': 'Мурсия',
-    '50': 'Сарагоса',
-    '48': 'Бильбао',
-    '07': 'Пальма-де-Майорка',
-    '35': 'Лас-Пальмас',
-    '18': 'Гранада',
-    '14': 'Кордова',
-    '36': 'Виго',
-    '47': 'Вальядолид',
-    '33': 'Овьедо',
-    '20': 'Сан-Себастьян',
-    '31': 'Памплона',
-    '11': 'Кадис',
-    '43': 'Таррагона',
-    '37': 'Саламанка',
-    '45': 'Толедо',
-    '17': 'Жирона',
-    '24': 'Леон',
-    '09': 'Бургос',
-    '04': 'Альмерия',
-    '12': 'Кастельон',
+  const postcodeCity = {
+    '28': 'Мадрид', '08': 'Барселона', '46': 'Валенсия', '41': 'Севилья',
+    '29': 'Малага', '03': 'Аликанте', '30': 'Мурсия', '50': 'Сарагоса',
+    '48': 'Бильбао', '07': 'Пальма-де-Майорка', '35': 'Лас-Пальмас',
+    '18': 'Гранада', '14': 'Кордова', '36': 'Виго', '47': 'Вальядолид',
+    '33': 'Овьедо', '20': 'Сан-Себастьян', '31': 'Памплона', '11': 'Кадис',
+    '43': 'Таррагона', '37': 'Саламанка', '45': 'Толедо', '17': 'Жирона',
+    '24': 'Леон', '09': 'Бургос', '04': 'Альмерия', '12': 'Кастельон',
     '38': 'Санта-Крус-де-Тенерифе'
   };
 
-  function isOtherCategory(value){
-    return /другое|інше|otro|other/i.test(value || '');
-  }
+  function setupHero(){
+    const hero = document.querySelector('.hero-search.kalaba-clean-hero');
+    if(!hero) return;
 
-  function isOtherCity(value){
-    return /другой город|інше місто|otra ciudad|other city/i.test(value || '');
-  }
+    const cat = document.getElementById('heroCategory');
+    const city = document.getElementById('heroCity');
+    const manualService = document.getElementById('heroManualService');
+    const manualCity = document.getElementById('heroManualCity');
+    const postcode = document.getElementById('heroPostcode');
+    const extra = hero.querySelector('.hero-extra-fields');
+    const serviceField = hero.querySelector('.hero-other-service');
+    const cityField = hero.querySelector('.hero-other-city');
+    const postcodeField = hero.querySelector('.hero-postcode');
+    const submit = hero.querySelector('.hero-submit');
 
-  function toggleManual(select, fieldSelector, testFn){
-    const field = document.querySelector(fieldSelector);
-    if(!field || !select) return;
-    const active = testFn(select.value || select.textContent);
-    field.classList.toggle('active', active);
-    const input = field.querySelector('input');
-    if(input) input.required = active;
-  }
-
-  function currentCategory(){
-    const select = document.querySelector('#category, #searchCategory, .hero-search select');
-    const manual = document.querySelector('#manualService, #otherService');
-    if(select && isOtherCategory(select.value) && manual && manual.value.trim()) return manual.value.trim();
-    return select ? select.value : '';
-  }
-
-  function currentCity(){
-    const select = document.querySelector('#city, #searchCity, #heroCitySelect');
-    const manual = document.querySelector('#manualCity');
-    if(select && isOtherCity(select.value) && manual && manual.value.trim()) return manual.value.trim();
-    if(select) return select.value;
-    const input = document.querySelector('.hero-search input[name="city"], .hero-search input');
-    return input ? input.value : '';
-  }
-
-  function currentPostcode(){
-    const pc = document.querySelector('#postcode, #searchPostcode, #heroPostcode');
-    return pc ? pc.value.trim() : '';
-  }
-
-  function updateCityFromPostcode(pcInput){
-    if(!pcInput) return;
-    const prefix = pcInput.value.trim().slice(0,2);
-    const city = citiesByPostcode[prefix];
-    const select = document.querySelector('#city, #searchCity, #heroCitySelect');
-    if(city && select){
-      select.value = city;
-      select.dispatchEvent(new Event('change'));
+    function isOtherCategory(){
+      return cat && cat.value === 'Другое';
     }
-  }
 
-  function setup(){
-    const catSelects = document.querySelectorAll('#category, #searchCategory, .hero-search select');
-    catSelects.forEach(sel => {
-      sel.addEventListener('change', () => toggleManual(sel, '.manual-service-field, .other-service-field', isOtherCategory));
-      toggleManual(sel, '.manual-service-field, .other-service-field', isOtherCategory);
-    });
+    function isOtherCity(){
+      return city && city.value === 'Другой город';
+    }
 
-    const citySelects = document.querySelectorAll('#city, #searchCity, #heroCitySelect');
-    citySelects.forEach(sel => {
-      sel.addEventListener('change', () => toggleManual(sel, '.manual-city-field', isOtherCity));
-      toggleManual(sel, '.manual-city-field', isOtherCity);
-    });
+    function updateVisibility(){
+      serviceField.classList.toggle('active', isOtherCategory());
+      cityField.classList.toggle('active', isOtherCity());
+      postcodeField.classList.add('active');
+      extra.classList.toggle('active', isOtherCategory() || isOtherCity() || true);
 
-    document.querySelectorAll('#postcode, #searchPostcode, #heroPostcode').forEach(pc => {
-      pc.addEventListener('input', () => updateCityFromPostcode(pc));
-    });
+      if(manualService) manualService.required = isOtherCategory();
+      if(manualCity) manualCity.required = isOtherCity();
+    }
 
-    document.querySelectorAll('.request-chip-row button, .quick-filters button, .chips a').forEach(btn => {
-      btn.addEventListener('click', function(e){
-        const category = btn.dataset.category || btn.textContent;
-        const sel = document.querySelector('#category, #searchCategory, .hero-search select');
-        if(sel){
-          sel.value = category;
-          sel.dispatchEvent(new Event('change'));
+    cat.addEventListener('change', updateVisibility);
+    city.addEventListener('change', updateVisibility);
+
+    if(postcode){
+      postcode.addEventListener('input', function(){
+        const found = postcodeCity[postcode.value.trim().slice(0,2)];
+        if(found && city){
+          city.value = found;
+          city.dispatchEvent(new Event('change'));
         }
       });
-    });
+    }
 
-    document.querySelectorAll('#submitRequest, #applySearch, .hero-search a, .hero-search button').forEach(btn => {
-      btn.addEventListener('click', function(e){
-        const isHero = btn.closest('.hero-search');
-        if(isHero || btn.id === 'applySearch'){
-          e.preventDefault();
-          const params = new URLSearchParams();
-          if(currentCategory()) params.set('category', currentCategory());
-          if(currentCity()) params.set('city', currentCity());
-          if(currentPostcode()) params.set('postcode', currentPostcode());
-          window.location.href = 'search.html' + (params.toString() ? '?' + params.toString() : '');
-        } else if(btn.id === 'submitRequest') {
-          e.preventDefault();
-          const params = new URLSearchParams();
-          if(currentCategory()) params.set('category', currentCategory());
-          if(currentCity()) params.set('city', currentCity());
-          if(currentPostcode()) params.set('postcode', currentPostcode());
-          window.location.href = 'offers.html' + (params.toString() ? '?' + params.toString() : '');
+    document.querySelectorAll('.chips a, .request-chip-row button, .quick-filters button').forEach(function(chip){
+      chip.addEventListener('click', function(e){
+        const selected = chip.dataset.category || chip.textContent;
+        if(cat){
+          if(selected.includes('Другое')) cat.value = 'Другое';
+          else if(selected.includes('Ремонт')) cat.value = 'Ремонт и отделка';
+          else if(selected.includes('Сантехника')) cat.value = 'Сантехника';
+          else if(selected.includes('Электрика')) cat.value = 'Электрика';
+          else if(selected.includes('Переезд')) cat.value = 'Переезды';
+          else if(selected.includes('Клининг')) cat.value = 'Клининг';
+          else if(selected.includes('Сад')) cat.value = 'Сад и ландшафт';
+          updateVisibility();
         }
       }, true);
     });
+
+    if(submit){
+      submit.addEventListener('click', function(e){
+        e.preventDefault();
+        const params = new URLSearchParams();
+        let category = cat.value;
+        let selectedCity = city.value;
+
+        if(category === 'Другое' && manualService.value.trim()) {
+          category = manualService.value.trim();
+        }
+
+        if(selectedCity === 'Другой город' && manualCity.value.trim()) {
+          selectedCity = manualCity.value.trim();
+        }
+
+        if(category) params.set('category', category);
+        if(selectedCity) params.set('city', selectedCity);
+        if(postcode && postcode.value.trim()) params.set('postcode', postcode.value.trim());
+
+        window.location.href = 'search.html?' + params.toString();
+      }, true);
+    }
+
+    updateVisibility();
   }
 
-  document.addEventListener('DOMContentLoaded', setup);
-  setup();
+  document.addEventListener('DOMContentLoaded', setupHero);
+  setupHero();
 })();
 
 </script>
