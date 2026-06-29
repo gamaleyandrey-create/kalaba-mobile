@@ -16,12 +16,36 @@
       <span data-ru="Маркетплейс услуг в Испании" data-uk="Маркетплейс послуг в Іспанії" data-es="Marketplace de servicios en España" data-en="Services marketplace in Spain">Маркетплейс услуг в Испании</span>
     </span>
   </a>
-  <div class="mobile-brand-actions">
+  <div class="mobile-brand-actions"><button class="mobile-menu-button" type="button" aria-label="Меню">☰</button>
     <a href="search.html" aria-label="Поиск">⌕</a>
     <a href="map.html" aria-label="Карта">🗺</a>
     <a href="customer.html" aria-label="Кабинет">👤</a>
   </div>
 </header>
+
+<div class="mobile-menu-backdrop"></div>
+<aside class="mobile-menu-panel">
+  <div class="mobile-menu-head">
+    <b>Kalaba</b>
+    <button class="mobile-menu-close" type="button">×</button>
+  </div>
+  <a href="index.html">🏠 Главная</a>
+  <a href="search.html">🔎 Поиск услуг</a>
+  <a href="catalog.html">🏢 Каталог компаний</a>
+  <a href="request.html">📝 Создать заявку</a>
+  <a href="offers.html">💬 Предложения</a>
+  <a href="chat.html">💭 Чат</a>
+  <a href="deal.html">🤝 Сделка</a>
+  <a href="payment.html">💳 Оплата</a>
+  <a href="map.html">🗺 Карта Испании</a>
+  <div class="mobile-menu-group">
+    <a href="customer.html">👤 Кабинет клиента</a>
+    <a href="business.html">👑 Кабинет компании</a>
+    <a href="admin.html">⚙️ Админ</a>
+    <a href="help.html">❓ Помощь</a>
+  </div>
+</aside>
+
 
 <aside class="sidebar">
   <div class="brand"><div class="logo">K</div><div><b>Kalaba</b><span data-ru="Платформа услуг в Испании" data-uk="Платформа послуг в Іспанії" data-es="Plataforma de servicios en España" data-en="Services platform in Spain">Платформа услуг в Испании</span></div></div>
@@ -121,12 +145,15 @@
 <section class="dashboard-row"><div class="panel"><h2 data-ru="Новые предложения" data-uk="Нові пропозиції" data-es="Nuevas ofertas" data-en="New offers">Новые предложения</h2><div class="offer"><b data-ru="Ремонт Барселона" data-uk="Ремонт Барселона" data-es="Reformas Barcelona" data-en="Renovation Barcelona">Ремонт Барселона</b><span>1 200 € · Барселона</span></div><div class="offer"><b data-ru="Клининг Севилья" data-uk="Клінінг Севілья" data-es="Limpieza Sevilla" data-en="Cleaning Seville">Клининг Севилья</b><span>85 € · Севилья</span></div></div><div class="panel"><h2 data-ru="Почему выбирают Kalaba?" data-uk="Чому обирають Kalaba?" data-es="¿Por qué eligen Kalaba?" data-en="Why choose Kalaba?">Почему выбирают Kalaba?</h2><div class="quote">✅ <b data-ru="Проверенные компании" data-uk="Перевірені компанії" data-es="Empresas verificadas" data-en="Verified companies">Проверенные компании</b><br><span data-ru="Мы проверяем каждую компанию перед публикацией." data-uk="Ми перевіряємо кожну компанію перед публікацією." data-es="Verificamos cada empresa antes de publicarla." data-en="We verify each company before publishing.">Мы проверяем каждую компанию перед публикацией.</span></div><div class="quote">🛡 <b data-ru="Безопасные сделки" data-uk="Безпечні угоди" data-es="Negocios seguros" data-en="Secure deals">Безопасные сделки</b><br><span data-ru="Ваши деньги защищены системой." data-uk="Ваші гроші захищені системою." data-es="Tu dinero está protegido por el sistema." data-en="Your money is protected by the system.">Ваши деньги защищены системой.</span></div></div></section>
 
 </main>
+
 <nav class="mobile-nav">
-<a href="index.html" data-ru="Главная" data-uk="Головна" data-es="Inicio" data-en="Home">Главная</a>
-<a href="search.html" data-ru="Поиск" data-uk="Пошук" data-es="Buscar" data-en="Search">Поиск</a>
-<a href="request.html" data-ru="Заявка" data-uk="Заявка" data-es="Solicitud" data-en="Request">Заявка</a>
-<a href="customer.html" data-ru="Кабинет" data-uk="Кабінет" data-es="Cuenta" data-en="Account">Кабинет</a>
+  <a href="index.html"><span>🏠</span>Главная</a>
+  <a href="search.html"><span>🔎</span>Поиск</a>
+  <a href="request.html"><span>📝</span>Заявка</a>
+  <a href="chat.html"><span>💬</span>Чат</a>
+  <a href="customer.html"><span>👤</span>Кабинет</a>
 </nav>
+
 <script src="app.js"></script>
 <script id="ACTIVE_LINKS_SCRIPT">
 
@@ -305,6 +332,40 @@
 
   document.querySelectorAll('.mobile-brand-logo, .mobile-brand-title').forEach(function(el){
     el.addEventListener('click', function(){ go('index.html'); });
+  });
+})();
+
+</script>
+<script id="MOBILE_APP_MENU_SCRIPT">
+
+(function(){
+  var menuButton = document.querySelector('.mobile-menu-button');
+  var closeButton = document.querySelector('.mobile-menu-close');
+  var backdrop = document.querySelector('.mobile-menu-backdrop');
+
+  if(menuButton){
+    menuButton.addEventListener('click', function(e){
+      e.preventDefault();
+      document.body.classList.add('mobile-menu-open');
+    });
+  }
+
+  if(closeButton){
+    closeButton.addEventListener('click', function(){
+      document.body.classList.remove('mobile-menu-open');
+    });
+  }
+
+  if(backdrop){
+    backdrop.addEventListener('click', function(){
+      document.body.classList.remove('mobile-menu-open');
+    });
+  }
+
+  document.querySelectorAll('.mobile-menu-panel a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.body.classList.remove('mobile-menu-open');
+    });
   });
 })();
 
